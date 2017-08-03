@@ -1,0 +1,82 @@
+#
+# Copyright SecureKey Technologies Inc. All Rights Reserved.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+client:
+ tls:
+  enabled: false
+
+ security:
+  enabled: true
+  hashAlgorithm: "SHA2"
+  level: 256
+
+ tcert:
+  batch:
+    size: 200
+
+ logging:
+  level: info
+
+ keystore:
+  path: /tmp/msp
+
+ cryptoconfig:
+  path: "/Users/Crownus/fabric-samples/basic-network/crypto-config"
+
+ connection:
+   timeout:
+    peer:
+     endorser: 3s
+     eventHub: 3s
+     eventReg: 3s
+    orderer: 3s
+
+# network provides a static definition of a Hyperledger Fabric network
+ network:
+  # list of ordering service nodes
+  orderers:
+   # orderer name
+   orderer0:
+    host: "localhost"
+    port: 7050
+    tls:
+     # Certificate location absolute path
+     certificate: "/Users/Crownus/fabric-samples/basic-network/crypto-config/ordererOrganizations/example.com/tlsca/tlsca.example.com-cert.pem"
+     # For testing only: overrides the virtual host name of the authority
+     serverHostOverride: "orderer.example.com"
+  # ap of member organizations forming the network
+  organizations:
+    # Org1 name
+    peerorg1:
+      # Membership Service Provider ID for this organization
+      mspID: "Org1MSP"
+      # CA config defines the fabric-ca instance that issues identities for this org
+      ca:
+       # TLS secured connections with the CA
+       tlsEnabled: true
+       # CA name
+       name: "ca-org1"
+       # CA URL. Note: https prefix required for TLS
+       serverURL: "https://localhost:7054"
+       # Configuration for mutual TLS with the CA
+       tls:
+        # Comma-Separated list of paths
+        certfiles : "/Users/Crownus/fabric-samples/basic-network/crypto-config/peerOrganizations/org1.example.com/ca/ca.org1.example.com-cert.pem"
+        client:
+         keyfile: "/Users/Crownus/fabric-samples/basic-network/crypto-config/peerOrganizations/org1.example.com/ca/a22daf356b2aab5792ea53e35f66fccef1d7f1aa2b3a2b92dbfbf96a448ea26a_sk"
+         certfile: "/Users/Crownus/fabric-samples/basic-network/crypto-config/peerOrganizations/org1.example.com/ca/org1.example.com-cert.pem"
+      # Peers that are part of this organization
+      peers:
+       # Peer name
+       peer0:
+        host: "localhost"
+        port: 7051
+        eventHost: "localhost"
+        eventPort: 7053
+        primary: true
+        tls:
+         # Certificate location absolute path
+         certificate: "/Users/Crownus/fabric-samples/basic-network/crypto-config/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem"
+         serverHostOverride: "peer0.org1.example.com"

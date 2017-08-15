@@ -1317,13 +1317,13 @@
 			"revisionTime": "2017-07-03T10:12:42Z"
 		},
 		{
-			"checksumSHA1": "I5DMrLM0FpmvG81tAWZ3zoydBIo=",
+			"checksumSHA1": "BCmjskha6fhGDUxvgayGZnF8RUc=",
 			"path": "github.com/sirupsen/logrus",
 			"revision": "181d419aa9e2223811b824e8f0b4af96f9ba9302",
 			"revisionTime": "2017-07-28T07:42:14Z"
 		},
 		{
-			"checksumSHA1": "BCmjskha6fhGDUxvgayGZnF8RUc=",
+			"checksumSHA1": "I5DMrLM0FpmvG81tAWZ3zoydBIo=",
 			"path": "github.com/sirupsen/logrus",
 			"revision": "181d419aa9e2223811b824e8f0b4af96f9ba9302",
 			"revisionTime": "2017-07-28T07:42:14Z"
@@ -1395,6 +1395,18 @@
 		{
 			"checksumSHA1": "o+jsS/rxceTym4M3reSPfrPxaio=",
 			"path": "github.com/stretchr/testify/mock",
+			"revision": "890a5c3458b43e6104ff5da8dfa139d013d77544",
+			"revisionTime": "2017-07-05T02:17:15Z"
+		},
+		{
+			"checksumSHA1": "7vs6dSc1PPGBKyzb/SCIyeMJPLQ=",
+			"path": "github.com/stretchr/testify/require",
+			"revision": "890a5c3458b43e6104ff5da8dfa139d013d77544",
+			"revisionTime": "2017-07-05T02:17:15Z"
+		},
+		{
+			"checksumSHA1": "uefllr2OtKBGo/kQSAPbW3w6p0A=",
+			"path": "github.com/stretchr/testify/suite",
 			"revision": "890a5c3458b43e6104ff5da8dfa139d013d77544",
 			"revisionTime": "2017-07-05T02:17:15Z"
 		},

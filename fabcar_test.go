@@ -88,6 +88,7 @@ func (suite *FabcarTestSuite) SetupSuite() {
 	eventHub, err := events.NewEventHub(sc)
 	eventHub.SetPeerAddr(fmt.Sprintf("%s:%d", peers[0].EventHost, peers[0].EventPort),
 		peers[0].TLS.Certificate, peers[0].TLS.ServerHostOverride)
+	suite.eventHub = eventHub
 
 }
 

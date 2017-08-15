@@ -117,6 +117,11 @@ func (suite *FabcarTestSuite) TestCreateCar() {
 	processTxn(suite, request)
 }
 
+func (suite *FabcarTestSuite) TestChangeCarOwner() {
+	request := buildRequest(suite, "changeCarOwner", "CAR10", "Barry")
+	processTxn(suite, request)
+}
+
 func processTxn(suite *FabcarTestSuite, request apitxn.ChaincodeInvokeRequest) {
 	require := suite.Require()
 	tprs, txnID, err := suite.channel.SendTransactionProposal(request)

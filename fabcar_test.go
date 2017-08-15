@@ -13,7 +13,6 @@ import (
 	fab "github.com/hyperledger/fabric-sdk-go/api/apifabclient"
 	deffab "github.com/hyperledger/fabric-sdk-go/def/fabapi"
 	"github.com/hyperledger/fabric-sdk-go/def/fabapi/opt"
-	"github.com/hyperledger/fabric-sdk-go/pkg/fabric-client/channel"
 	"github.com/hyperledger/fabric-sdk-go/pkg/fabric-client/orderer"
 	"github.com/hyperledger/fabric-sdk-go/pkg/fabric-client/peer"
 	"github.com/hyperledger/fabric-sdk-go/pkg/fabric-txn"
@@ -29,6 +28,7 @@ type FabcarTestSuite struct {
 	peer             fab.Peer
 	adminUser        ca.User
 	ordererAdminUser ca.User
+	user             ca.User
 	chaincodeID      string
 	eventHub         fab.EventHub
 }
@@ -55,28 +55,33 @@ func (suite *FabcarTestSuite) SetupSuite() {
 	err = sc.SaveUserToStateStore(user, false)
 	require.NoError(err)
 	suite.client = sc
-
-	ordererConfig, err := suite.client.Config().RandomOrdererConfig()
+	suite.adminUser, err = GetAdmin(sc, "org1", suite.org)
+	require.NoError(err)
+	suite.client.SetUserContext(suite.adminUser)
+	suite.ordererAdminUser, err = GetOrdererAdmin(sc, suite.org)
+	require.NoError(err)
+	suite.user, err = GetUser(sc, "org1", suite.org)
+	require.NoError(err)
+	ordererConfig, err := sc.Config().RandomOrdererConfig()
+	require.NoError(err)
+	suite.channel, err = sc.NewChannel("mychannel")
 	require.NoError(err)
 	suite.orderer, err = orderer.NewOrderer(fmt.Sprintf("%s:%d", ordererConfig.Host,
 		ordererConfig.Port), ordererConfig.TLS.Certificate,
-		ordererConfig.TLS.ServerHostOverride, suite.client.Config())
+		ordererConfig.TLS.ServerHostOverride, sc.Config())
 	require.NoError(err)
-	peers, err := suite.client.Config().PeersConfig(suite.org)
+	err = suite.channel.AddOrderer(suite.orderer)
+	require.NoError(err)
+	peers, err := sc.Config().PeersConfig(suite.org)
 	require.NoError(err)
 	suite.peer, err = peer.NewPeerTLSFromCert(fmt.Sprintf("%s:%d", peers[0].Host,
 		peers[0].Port), peers[0].TLS.Certificate,
-		peers[0].TLS.ServerHostOverride, suite.client.Config())
+		peers[0].TLS.ServerHostOverride, sc.Config()) //We have just one peer
 	require.NoError(err)
-	suite.adminUser, err = GetAdmin(suite.client, "org1", suite.org)
+	err = suite.channel.AddPeer(suite.peer)
 	require.NoError(err)
-	suite.client.SetUserContext(suite.adminUser)
-	suite.ordererAdminUser, err = GetOrdererAdmin(suite.client, suite.org)
+	err = suite.channel.SetPrimaryPeer(suite.peer)
 	require.NoError(err)
-	suite.channel, err = channel.NewChannel("mychannel", suite.client)
-	require.NoError(err)
-	suite.channel.SetPrimaryPeer(suite.peer)
-	suite.channel.AddPeer(suite.peer)
 
 }
 
@@ -116,6 +121,14 @@ func GetAdmin(c fab.FabricClient, orgPath string, orgName string) (ca.User, erro
 	keyDir := fmt.Sprintf("peerOrganizations/%s.example.com/users/Admin@%s.example.com/msp/keystore", orgPath, orgPath)
 	certDir := fmt.Sprintf("peerOrganizations/%s.example.com/users/Admin@%s.example.com/msp/signcerts", orgPath, orgPath)
 	username := fmt.Sprintf("peer%sAdmin", orgPath)
+	return getDefaultImplPreEnrolledUser(c, keyDir, certDir, username, orgName)
+}
+
+// GetUser returns a pre-enrolled org user
+func GetUser(c fab.FabricClient, orgPath string, orgName string) (ca.User, error) {
+	keyDir := fmt.Sprintf("peerOrganizations/%s.example.com/users/User1@%s.example.com/msp/keystore", orgPath, orgPath)
+	certDir := fmt.Sprintf("peerOrganizations/%s.example.com/users/User1@%s.example.com/msp/signcerts", orgPath, orgPath)
+	username := fmt.Sprintf("peer%sUser1", orgPath)
 	return getDefaultImplPreEnrolledUser(c, keyDir, certDir, username, orgName)
 }
 

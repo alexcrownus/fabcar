@@ -23,7 +23,7 @@ client:
   path: /tmp/msp
 
  cryptoconfig:
-  path: "/Users/Crownus/fabric-samples/basic-network/crypto-config"
+  path: "$GOPATH/src/fabric-samples/basic-network/crypto-config"
 
  connection:
    timeout:
@@ -43,7 +43,7 @@ client:
     port: 7050
     tls:
      # Certificate location absolute path
-     certificate: "/Users/Crownus/fabric-samples/basic-network/crypto-config/ordererOrganizations/example.com/tlsca/tlsca.example.com-cert.pem"
+     certificate: "$GOPATH/src/fabric-samples/basic-network/crypto-config/ordererOrganizations/example.com/tlsca/tlsca.example.com-cert.pem"
      # For testing only: overrides the virtual host name of the authority
      serverHostOverride: "orderer.example.com"
   # ap of member organizations forming the network
@@ -55,18 +55,18 @@ client:
       # CA config defines the fabric-ca instance that issues identities for this org
       ca:
        # TLS secured connections with the CA
-       tlsEnabled: true
+       tlsEnabled: false
        # CA name
-       name: "ca-org1"
+       name: "ca.example.com"
        # CA URL. Note: https prefix required for TLS
-       serverURL: "https://localhost:7054"
+       serverURL: "http://localhost:7054"
        # Configuration for mutual TLS with the CA
        tls:
         # Comma-Separated list of paths
-        certfiles : "/Users/Crownus/fabric-samples/basic-network/crypto-config/peerOrganizations/org1.example.com/ca/ca.org1.example.com-cert.pem"
+        certfiles : "$GOPATH/src/fabric-samples/basic-network/crypto-config/peerOrganizations/org1.example.com/ca/ca.org1.example.com-cert.pem"
         client:
-         keyfile: "/Users/Crownus/fabric-samples/basic-network/crypto-config/peerOrganizations/org1.example.com/ca/a22daf356b2aab5792ea53e35f66fccef1d7f1aa2b3a2b92dbfbf96a448ea26a_sk"
-         certfile: "/Users/Crownus/fabric-samples/basic-network/crypto-config/peerOrganizations/org1.example.com/ca/org1.example.com-cert.pem"
+         keyfile: "$GOPATH/src/fabric-samples/basic-network/crypto-config/peerOrganizations/org1.example.com/ca/0e729224e8b3f31784c8a93c5b8ef6f4c1c91d9e6e577c45c33163609fe40011_sk"
+         certfile: "$GOPATH/src/fabric-samples/basic-network/crypto-config/peerOrganizations/org1.example.com/ca/ca.org1.example.com-cert.pem"
       # Peers that are part of this organization
       peers:
        # Peer name
@@ -78,5 +78,5 @@ client:
         primary: true
         tls:
          # Certificate location absolute path
-         certificate: "/Users/Crownus/fabric-samples/basic-network/crypto-config/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem"
+         certificate: "$GOPATH/src/fabric-samples/basic-network/crypto-config/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem"
          serverHostOverride: "peer0.org1.example.com"

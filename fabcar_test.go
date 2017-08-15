@@ -92,8 +92,6 @@ func (suite *FabcarTestSuite) SetupSuite() {
 
 }
 
-//func getEventHub
-
 func (suite *FabcarTestSuite) TestQueryAllCars() {
 	require := suite.Require()
 	fcn := "queryAllCars"

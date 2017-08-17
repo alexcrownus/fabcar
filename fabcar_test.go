@@ -18,7 +18,6 @@ import (
 	"github.com/hyperledger/fabric-sdk-go/pkg/fabric-client/orderer"
 	"github.com/hyperledger/fabric-sdk-go/pkg/fabric-client/peer"
 	"github.com/hyperledger/fabric-sdk-go/pkg/fabric-txn"
-	pb "github.com/hyperledger/fabric/protos/peer"
 	"github.com/stretchr/testify/suite"
 )
 
@@ -47,6 +46,7 @@ func (suite *FabcarTestSuite) SetupSuite() {
 		},
 	}
 	sdk, err := deffab.NewSDK(sdkOptions)
+	require.NoError(err)
 	ctx, err := sdk.NewContext(suite.org)
 	require.NoError(err)
 	user, err := deffab.NewUser(sdk.ConfigProvider(), ctx.MSPClient(), "admin", "adminpw", suite.org)
@@ -111,65 +111,23 @@ func (suite *FabcarTestSuite) TestQueryCar() {
 }
 
 func (suite *FabcarTestSuite) TestCreateCar() {
-	request := buildRequest(suite, "createCar", "CAR10", "Chevy", "Volt", "Red", "Nick")
-	processTxn(suite, request)
+	fcn := "createCar"
+	args := []string{"CAR11", "Honda", "Accord", "Black", "Tom"}
+	transientDataMap := make(map[string][]byte)
+	transientDataMap["result"] = []byte("Transient data in create car...")
+	txnID, err := fabrictxn.InvokeChaincode(suite.client, suite.channel, []apitxn.ProposalProcessor{suite.channel.PrimaryPeer()}, suite.eventHub, suite.chaincodeID, fcn, args, transientDataMap)
+	suite.Require().NoError(err)
+	fmt.Println(txnID)
 }
 
 func (suite *FabcarTestSuite) TestChangeCarOwner() {
-	request := buildRequest(suite, "changeCarOwner", "CAR10", "Barry")
-	processTxn(suite, request)
-}
-
-func processTxn(suite *FabcarTestSuite, request apitxn.ChaincodeInvokeRequest) {
-	require := suite.Require()
-	tprs, txnID, err := suite.channel.SendTransactionProposal(request)
-	require.NoError(err)
-	for _, v := range tprs {
-		require.NoErrorf(v.Err, "invoke Endorser %s returned error: %v", v.Endorser, v.Err)
-	}
-	done, fail := registerEvent(suite, txnID)
-	tx, err := suite.channel.CreateTransaction(tprs)
-	require.NoError(err)
-	tr, err := suite.channel.SendTransaction(tx)
-	require.NoError(err)
-	require.NoError(tr.Err, "Orderer %s return error: %v", tr.Orderer, tr.Err)
-	fmt.Println(tr)
-	select {
-	case <-done:
-	case err = <-fail:
-		require.NoErrorf(err, "invoke Error received from eventhub for txid(%s) error(%v)", txnID, fail)
-	case <-time.After(time.Second * 30):
-		require.FailNow("invoke Didn't receive block event for txid(%s)", txnID)
-	}
-}
-func registerEvent(suite *FabcarTestSuite, txnID apitxn.TransactionID) (chan bool, chan error) {
-	require := suite.Require()
-	done := make(chan bool)
-	fail := make(chan error)
-	err := suite.eventHub.Connect()
-	require.NoError(err)
-	suite.eventHub.RegisterTxEvent(txnID, func(txId string, errorCode pb.TxValidationCode, err error) {
-		if err != nil {
-			fmt.Printf("Received error event for txid(%s)\n", txId)
-			fail <- err
-		} else {
-			fmt.Printf("Received success event for txid(%s)\n", txId)
-			done <- true
-		}
-	})
-	return done, fail
-}
-func buildRequest(suite *FabcarTestSuite, fcn string, args ...string) apitxn.ChaincodeInvokeRequest {
+	fcn := "changeCarOwner"
+	args := []string{"CAR10", "Barry"}
 	transientDataMap := make(map[string][]byte)
 	transientDataMap["result"] = []byte("Transient data in create car...")
-	request := apitxn.ChaincodeInvokeRequest{
-		Targets:      peer.PeersToTxnProcessors(suite.channel.Peers()),
-		Fcn:          fcn,
-		Args:         args,
-		TransientMap: transientDataMap,
-		ChaincodeID:  suite.chaincodeID,
-	}
-	return request
+	txnID, err := fabrictxn.InvokeChaincode(suite.client, suite.channel, []apitxn.ProposalProcessor{suite.channel.PrimaryPeer()}, suite.eventHub, suite.chaincodeID, fcn, args, transientDataMap)
+	suite.Require().NoError(err)
+	fmt.Println(txnID)
 }
 
 func TestFabcar(t *testing.T) {

@@ -5,8 +5,10 @@
 #### SoftHSM 
 * Install softhsm
     
+    ```sh 
     brew install softhsm
     
 * Init softhsm
 
-    softhsm2-util --init-token --slot 0 --label "ForFabric" --so-pin 1234 --pin 98765432 
+    ```sh
+    softhsm2-util --init-token --slot 0 --label "ForFabric" --so-pin 1234 --pin 98765432

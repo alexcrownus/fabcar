@@ -57,7 +57,6 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 *.lnk
-.gitignore
 .idea/encodings.xml
 .idea/inspectionProfiles/
 .idea/misc.xml

@@ -90,6 +90,7 @@ func (suite *FabcarTestSuite) SetupSuite() {
 
 	foundEventHub := false
 	eventHub, err := events.NewEventHub(sc)
+	require.NoError(err)
 	for _, p := range peers {
 		if p.Url != "" {
 			serverHostOverride = ""

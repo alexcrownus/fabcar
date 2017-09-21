@@ -9,12 +9,12 @@ package fabricca
 import (
 	"fmt"
 
-	api "github.com/hyperledger/fabric-ca/api"
-	fabric_ca "github.com/hyperledger/fabric-ca/lib"
 	config "github.com/hyperledger/fabric-sdk-go/api/apiconfig"
 	sdkApi "github.com/hyperledger/fabric-sdk-go/api/apifabca"
+	api "github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric-ca/api"
+	fabric_ca "github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric-ca/lib"
 
-	"github.com/hyperledger/fabric/bccsp"
+	"github.com/hyperledger/fabric-sdk-go/third_party/github.com/hyperledger/fabric/bccsp"
 	"github.com/op/go-logging"
 )
 
@@ -46,9 +46,9 @@ func NewFabricCAClient(config config.Config, org string) (*FabricCA, error) {
 	}
 
 	//set server CAName
-	c.Config.CAName = conf.Name
+	c.Config.CAName = conf.CaName
 	//set server URL
-	c.Config.URL = conf.ServerURL
+	c.Config.URL = conf.Url
 	//certs file list
 	c.Config.TLS.CertFiles, err = config.CAServerCertFiles(org)
 	if err != nil {
@@ -66,13 +66,18 @@ func NewFabricCAClient(config config.Config, org string) (*FabricCA, error) {
 		return nil, err
 	}
 
+	// get Client configs
+	_, err = config.Client()
+	if err != nil {
+		return nil, err
+	}
+
 	//TLS flag enabled/disabled
-	c.Config.TLS.Enabled = conf.TLSEnabled
+	c.Config.TLS.Enabled = config.IsTLSEnabled()
 	c.Config.MSPDir = config.CAKeyStorePath()
 	c.Config.CSP = config.CSPConfig()
 
 	fabricCAClient := FabricCA{fabricCAClient: c}
-	logger.Infof("Constructed fabricCAClient instance: %v", fabricCAClient)
 
 	err = c.Init()
 	if err != nil {

@@ -14,7 +14,7 @@ import (
 
 	"fmt"
 
-	bccspFactory "github.com/hyperledger/fabric/bccsp/factory"
+	bccspFactory "github.com/hyperledger/fabric-sdk-go/third_party/github.com/hyperledger/fabric/bccsp/factory"
 	"github.com/spf13/viper"
 )
 
@@ -32,6 +32,11 @@ func NewMockConfig() config.Config {
 // NewMockConfigCustomized ...
 func NewMockConfigCustomized(tlsEnabled bool, errorCase bool) config.Config {
 	return &MockConfig{tlsEnabled: tlsEnabled, errorCase: errorCase}
+}
+
+// Client ...
+func (c *MockConfig) Client() (*config.ClientConfig, error) {
+	return nil, nil
 }
 
 // CAConfig not implemented
@@ -92,11 +97,6 @@ func (c *MockConfig) TLSCACertPool(tlsCertificate string) (*x509.CertPool, error
 func (c *MockConfig) SetTLSCACertPool(pool *x509.CertPool) {
 }
 
-// IsSecurityEnabled ...
-func (c *MockConfig) IsSecurityEnabled() bool {
-	return false
-}
-
 // TcertBatchSize ...
 func (c *MockConfig) TcertBatchSize() int {
 	return 0
@@ -111,6 +111,11 @@ func (c *MockConfig) SecurityAlgorithm() string {
 func (c *MockConfig) SecurityLevel() int {
 	return 0
 
+}
+
+//SecurityProviderLibPath will be set only if provider is PKCS11
+func (c *MockConfig) SecurityProviderLibPath() string {
+	return ""
 }
 
 // OrderersConfig returns a list of defined orderers
@@ -156,4 +161,34 @@ func (c *MockConfig) CSPConfig() *bccspFactory.FactoryOpts {
 // NetworkConfig not implemented
 func (c *MockConfig) NetworkConfig() (*config.NetworkConfig, error) {
 	return nil, nil
+}
+
+// Ephemeral flag
+func (c *MockConfig) Ephemeral() bool {
+	return false
+}
+
+// SecurityProvider ...
+func (c *MockConfig) SecurityProvider() string {
+	return ""
+}
+
+// SecurityProviderLabel ...
+func (c *MockConfig) SecurityProviderLabel() string {
+	return ""
+}
+
+//SecurityProviderPin ...
+func (c *MockConfig) SecurityProviderPin() string {
+	return ""
+}
+
+//SoftVerify flag
+func (c *MockConfig) SoftVerify() bool {
+	return false
+}
+
+// IsSecurityEnabled ...
+func (c *MockConfig) IsSecurityEnabled() bool {
+	return false
 }

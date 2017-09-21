@@ -12,7 +12,7 @@ import (
 
 	"github.com/hyperledger/fabric-sdk-go/api/apiconfig"
 	"github.com/hyperledger/fabric-sdk-go/api/apitxn"
-	pb "github.com/hyperledger/fabric/protos/peer"
+	pb "github.com/hyperledger/fabric-sdk-go/third_party/github.com/hyperledger/fabric/protos/peer"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
 )
@@ -107,5 +107,6 @@ func (p *peerEndorser) sendProposal(proposal apitxn.TransactionProposal) (*pb.Pr
 }
 
 func (tpe TransactionProposalError) Error() string {
-	return fmt.Sprintf("Transaction processor (%s) returned error '%s' for proposal: %v", tpe.Endorser, tpe.Err.Error(), tpe.Proposal)
+	return fmt.Sprintf("Transaction processor (%s) returned error '%s' for txID '%s'",
+		tpe.Endorser, tpe.Err.Error(), tpe.Proposal.TxnID.ID)
 }

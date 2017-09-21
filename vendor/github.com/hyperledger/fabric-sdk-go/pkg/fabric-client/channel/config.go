@@ -11,14 +11,14 @@ import (
 
 	"github.com/golang/protobuf/proto"
 
-	fabric_config "github.com/hyperledger/fabric/common/config"
-	"github.com/hyperledger/fabric/msp"
+	channelConfig "github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/common/channelconfig"
+	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/msp"
 
-	"github.com/hyperledger/fabric/protos/common"
-	mb "github.com/hyperledger/fabric/protos/msp"
-	ab "github.com/hyperledger/fabric/protos/orderer"
-	pb "github.com/hyperledger/fabric/protos/peer"
-	protos_utils "github.com/hyperledger/fabric/protos/utils"
+	ab "github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/protos/orderer"
+	protos_utils "github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/protos/utils"
+	"github.com/hyperledger/fabric-sdk-go/third_party/github.com/hyperledger/fabric/protos/common"
+	mb "github.com/hyperledger/fabric-sdk-go/third_party/github.com/hyperledger/fabric/protos/msp"
+	pb "github.com/hyperledger/fabric-sdk-go/third_party/github.com/hyperledger/fabric/protos/peer"
 
 	fab "github.com/hyperledger/fabric-sdk-go/api/apifabclient"
 	fc "github.com/hyperledger/fabric-sdk-go/pkg/fabric-client/internal"
@@ -308,7 +308,7 @@ func loadConfigValue(configItems *configItems, key string, versionsValue *common
 	versionsValue.Version = configValue.Version
 
 	switch key {
-	case fabric_config.AnchorPeersKey:
+	case channelConfig.AnchorPeersKey:
 		anchorPeers := &pb.AnchorPeers{}
 		err := proto.Unmarshal(configValue.Value, anchorPeers)
 		if err != nil {
@@ -326,7 +326,7 @@ func loadConfigValue(configItems *configItems, key string, versionsValue *common
 		}
 		break
 
-	case fabric_config.MSPKey:
+	case channelConfig.MSPKey:
 		mspConfig := &mb.MSPConfig{}
 		err := proto.Unmarshal(configValue.Value, mspConfig)
 		if err != nil {
@@ -343,7 +343,7 @@ func loadConfigValue(configItems *configItems, key string, versionsValue *common
 		configItems.msps = append(configItems.msps, mspConfig)
 		break
 
-	case fabric_config.ConsensusTypeKey:
+	case channelConfig.ConsensusTypeKey:
 		consensusType := &ab.ConsensusType{}
 		err := proto.Unmarshal(configValue.Value, consensusType)
 		if err != nil {
@@ -354,7 +354,7 @@ func loadConfigValue(configItems *configItems, key string, versionsValue *common
 		// TODO: Do something with this value
 		break
 
-	case fabric_config.BatchSizeKey:
+	case channelConfig.BatchSizeKey:
 		batchSize := &ab.BatchSize{}
 		err := proto.Unmarshal(configValue.Value, batchSize)
 		if err != nil {
@@ -367,7 +367,7 @@ func loadConfigValue(configItems *configItems, key string, versionsValue *common
 		// TODO: Do something with this value
 		break
 
-	case fabric_config.BatchTimeoutKey:
+	case channelConfig.BatchTimeoutKey:
 		batchTimeout := &ab.BatchTimeout{}
 		err := proto.Unmarshal(configValue.Value, batchTimeout)
 		if err != nil {
@@ -377,7 +377,7 @@ func loadConfigValue(configItems *configItems, key string, versionsValue *common
 		// TODO: Do something with this value
 		break
 
-	case fabric_config.ChannelRestrictionsKey:
+	case channelConfig.ChannelRestrictionsKey:
 		channelRestrictions := &ab.ChannelRestrictions{}
 		err := proto.Unmarshal(configValue.Value, channelRestrictions)
 		if err != nil {
@@ -387,7 +387,7 @@ func loadConfigValue(configItems *configItems, key string, versionsValue *common
 		// TODO: Do something with this value
 		break
 
-	case fabric_config.HashingAlgorithmKey:
+	case channelConfig.HashingAlgorithmKey:
 		hashingAlgorithm := &common.HashingAlgorithm{}
 		err := proto.Unmarshal(configValue.Value, hashingAlgorithm)
 		if err != nil {
@@ -397,7 +397,7 @@ func loadConfigValue(configItems *configItems, key string, versionsValue *common
 		// TODO: Do something with this value
 		break
 
-	case fabric_config.ConsortiumKey:
+	case channelConfig.ConsortiumKey:
 		consortium := &common.Consortium{}
 		err := proto.Unmarshal(configValue.Value, consortium)
 		if err != nil {
@@ -407,7 +407,7 @@ func loadConfigValue(configItems *configItems, key string, versionsValue *common
 		// TODO: Do something with this value
 		break
 
-	case fabric_config.BlockDataHashingStructureKey:
+	case channelConfig.BlockDataHashingStructureKey:
 		bdhstruct := &common.BlockDataHashingStructure{}
 		err := proto.Unmarshal(configValue.Value, bdhstruct)
 		if err != nil {
@@ -417,7 +417,7 @@ func loadConfigValue(configItems *configItems, key string, versionsValue *common
 		// TODO: Do something with this value
 		break
 
-	case fabric_config.OrdererAddressesKey:
+	case channelConfig.OrdererAddressesKey:
 		ordererAddresses := &common.OrdererAddresses{}
 		err := proto.Unmarshal(configValue.Value, ordererAddresses)
 		if err != nil {

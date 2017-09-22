@@ -5,9 +5,7 @@ import (
 
 	"fmt"
 	"io/ioutil"
-	"math/rand"
 	"path/filepath"
-	"time"
 
 	ca "github.com/hyperledger/fabric-sdk-go/api/apifabca"
 	fab "github.com/hyperledger/fabric-sdk-go/api/apifabclient"
@@ -16,7 +14,6 @@ import (
 	"github.com/hyperledger/fabric-sdk-go/def/fabapi/opt"
 	"github.com/hyperledger/fabric-sdk-go/pkg/fabric-client/events"
 	"github.com/hyperledger/fabric-sdk-go/pkg/fabric-client/orderer"
-	"github.com/hyperledger/fabric-sdk-go/pkg/fabric-client/peer"
 	"github.com/hyperledger/fabric-sdk-go/pkg/fabric-txn"
 	"github.com/stretchr/testify/suite"
 )
@@ -27,7 +24,6 @@ type FabcarTestSuite struct {
 	client           fab.FabricClient
 	channel          fab.Channel
 	orderer          fab.Orderer
-	peer             fab.Peer
 	adminUser        ca.User
 	ordererAdminUser ca.User
 	user             ca.User
@@ -37,7 +33,7 @@ type FabcarTestSuite struct {
 
 func (suite *FabcarTestSuite) SetupSuite() {
 	require := suite.Require()
-	suite.org = "peerorg1"
+	suite.org = "org1"
 	suite.chaincodeID = "fabcar"
 	sdkOptions := deffab.Options{
 		ConfigFile: "config_test.yaml",
@@ -60,34 +56,55 @@ func (suite *FabcarTestSuite) SetupSuite() {
 	suite.client = sc
 	suite.adminUser, err = GetAdmin(sc, "org1", suite.org)
 	require.NoError(err)
-	suite.client.SetUserContext(suite.adminUser)
 	suite.ordererAdminUser, err = GetOrdererAdmin(sc, suite.org)
 	require.NoError(err)
 	suite.user, err = GetUser(sc, "org1", suite.org)
 	require.NoError(err)
+	//by default client's user context should use regular user, for admin actions, UserContext must be set to AdminUser
+	sc.SetUserContext(suite.user)
 	ordererConfig, err := sc.Config().RandomOrdererConfig()
 	require.NoError(err)
+	serverHostOverride := ""
+	if str, ok := ordererConfig.GrpcOptions["ssl-target-name-override"].(string); ok {
+		serverHostOverride = str
+	}
 	suite.channel, err = sc.NewChannel("mychannel")
 	require.NoError(err)
-	suite.orderer, err = orderer.NewOrderer(fmt.Sprintf("%s:%d", ordererConfig.Host,
-		ordererConfig.Port), ordererConfig.TLS.Certificate,
-		ordererConfig.TLS.ServerHostOverride, sc.Config())
+	suite.orderer, err = orderer.NewOrderer(ordererConfig.URL, ordererConfig.TlsCACerts.Path,
+		serverHostOverride, sc.Config())
 	require.NoError(err)
 	err = suite.channel.AddOrderer(suite.orderer)
 	require.NoError(err)
 	peers, err := sc.Config().PeersConfig(suite.org)
 	require.NoError(err)
-	suite.peer, err = peer.NewPeerTLSFromCert(fmt.Sprintf("%s:%d", peers[0].Host,
-		peers[0].Port), peers[0].TLS.Certificate,
-		peers[0].TLS.ServerHostOverride, sc.Config()) //We have just one peer
-	require.NoError(err)
-	err = suite.channel.AddPeer(suite.peer)
-	require.NoError(err)
-	err = suite.channel.SetPrimaryPeer(suite.peer)
-	require.NoError(err)
+	for _, p := range peers {
+		serverHostOverride = ""
+		if str, ok := p.GrpcOptions["ssl-target-name-override"].(string); ok {
+			serverHostOverride = str
+		}
+		endorser, err := deffab.NewPeer(p.Url, p.TlsCACerts.Path, serverHostOverride, sc.Config())
+		require.NoError(err)
+		err = suite.channel.AddPeer(endorser)
+		require.NoError(err)
+	}
+
+	foundEventHub := false
 	eventHub, err := events.NewEventHub(sc)
-	eventHub.SetPeerAddr(fmt.Sprintf("%s:%d", peers[0].EventHost, peers[0].EventPort),
-		peers[0].TLS.Certificate, peers[0].TLS.ServerHostOverride)
+	require.NoError(err)
+	for _, p := range peers {
+		if p.Url != "" {
+			serverHostOverride = ""
+			if str, ok := p.GrpcOptions["ssl-target-name-override"].(string); ok {
+				serverHostOverride = str
+			}
+			eventHub.SetPeerAddr(p.EventUrl, p.TlsCACerts.Path, serverHostOverride)
+			foundEventHub = true
+			break
+		}
+	}
+	if !foundEventHub {
+		require.FailNow("No EventHub configuration found")
+	}
 	suite.eventHub = eventHub
 
 }
@@ -117,7 +134,7 @@ func (suite *FabcarTestSuite) TestCreateCar() {
 	transientDataMap["result"] = []byte("Transient data in create car...")
 	txnID, err := fabrictxn.InvokeChaincode(suite.client, suite.channel, []apitxn.ProposalProcessor{suite.channel.PrimaryPeer()}, suite.eventHub, suite.chaincodeID, fcn, args, transientDataMap)
 	suite.Require().NoError(err)
-	fmt.Println(txnID)
+	fmt.Println(txnID.ID)
 }
 
 func (suite *FabcarTestSuite) TestChangeCarOwner() {
@@ -127,7 +144,7 @@ func (suite *FabcarTestSuite) TestChangeCarOwner() {
 	transientDataMap["result"] = []byte("Transient data in create car...")
 	txnID, err := fabrictxn.InvokeChaincode(suite.client, suite.channel, []apitxn.ProposalProcessor{suite.channel.PrimaryPeer()}, suite.eventHub, suite.chaincodeID, fcn, args, transientDataMap)
 	suite.Require().NoError(err)
-	fmt.Println(txnID)
+	fmt.Println(txnID.ID)
 }
 
 func TestFabcar(t *testing.T) {
@@ -155,22 +172,6 @@ func GetUser(c fab.FabricClient, orgPath string, orgName string) (ca.User, error
 	certDir := fmt.Sprintf("peerOrganizations/%s.example.com/users/User1@%s.example.com/msp/signcerts", orgPath, orgPath)
 	username := fmt.Sprintf("peer%sUser1", orgPath)
 	return getDefaultImplPreEnrolledUser(c, keyDir, certDir, username, orgName)
-}
-
-// GenerateRandomID generates random ID
-func GenerateRandomID() string {
-	rand.Seed(time.Now().UnixNano())
-	return randomString(10)
-}
-
-// Utility to create random string of strlen length
-func randomString(strlen int) string {
-	const chars = "abcdefghijklmnopqrstuvwxyz0123456789"
-	result := make([]byte, strlen)
-	for i := 0; i < strlen; i++ {
-		result[i] = chars[rand.Intn(len(chars))]
-	}
-	return string(result)
 }
 
 // GetDefaultImplPreEnrolledUser ...

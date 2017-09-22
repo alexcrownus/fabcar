@@ -226,7 +226,7 @@ func startBenchmarkClient(config *testpb.ClientConfig) (*benchmarkClient, error)
 		histogramOptions: stats.HistogramOptions{
 			NumBuckets:     int(math.Log(config.HistogramParams.MaxPossible)/math.Log(1+config.HistogramParams.Resolution)) + 1,
 			GrowthFactor:   config.HistogramParams.Resolution,
-			BaseBucketSize: (1 + config.HistogramParams.Resolution),
+			BaseBucketSize: 1 + config.HistogramParams.Resolution,
 			MinValue:       0,
 		},
 		lockingHistograms: make([]lockingHistogram, rpcCountPerConn*len(conns), rpcCountPerConn*len(conns)),

@@ -51,7 +51,7 @@ func gencrlHandler(w http.ResponseWriter, r *http.Request) error {
 			return err
 		}
 
-		newExpiryTime = time.Now().Add((time.Duration(expiryInt) * time.Second))
+		newExpiryTime = time.Now().Add(time.Duration(expiryInt) * time.Second)
 	}
 
 	if req.ExpiryTime == "" {

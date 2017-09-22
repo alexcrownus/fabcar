@@ -13,14 +13,14 @@ It has these top-level messages:
 */
 package indeximport
 
-import testing "testing"
+import "testing"
 import math_rand "math/rand"
-import time "time"
+import "time"
 import github_com_gogo_protobuf_proto "github.com/gogo/protobuf/proto"
 import github_com_gogo_protobuf_jsonpb "github.com/gogo/protobuf/jsonpb"
-import proto "github.com/gogo/protobuf/proto"
-import fmt "fmt"
-import math "math"
+import "github.com/gogo/protobuf/proto"
+import "fmt"
+import "math"
 import _ "github.com/gogo/protobuf/test/indeximport-issue72/index"
 import _ "github.com/gogo/protobuf/gogoproto"
 

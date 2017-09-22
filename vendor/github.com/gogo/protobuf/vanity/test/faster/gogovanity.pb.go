@@ -13,12 +13,12 @@
 */
 package vanity
 
-import proto "github.com/gogo/protobuf/proto"
-import fmt "fmt"
-import math "math"
+import "github.com/gogo/protobuf/proto"
+import "fmt"
+import "math"
 import _ "github.com/gogo/protobuf/gogoproto"
 
-import io "io"
+import "io"
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
@@ -152,7 +152,7 @@ func sovGogovanity(x uint64) (n int) {
 	return n
 }
 func sozGogovanity(x uint64) (n int) {
-	return sovGogovanity(uint64((x << 1) ^ uint64((int64(x) >> 63))))
+	return sovGogovanity(uint64((x << 1) ^ uint64(int64(x) >> 63)))
 }
 func (m *B) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)

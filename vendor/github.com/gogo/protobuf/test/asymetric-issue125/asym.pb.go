@@ -14,14 +14,14 @@ It has these top-level messages:
 */
 package asym
 
-import proto "github.com/gogo/protobuf/proto"
-import fmt "fmt"
-import math "math"
+import "github.com/gogo/protobuf/proto"
+import "fmt"
+import "math"
 import _ "github.com/gogo/protobuf/gogoproto"
 
-import bytes "bytes"
+import "bytes"
 
-import io "io"
+import "io"
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
@@ -367,7 +367,7 @@ func sovAsym(x uint64) (n int) {
 	return n
 }
 func sozAsym(x uint64) (n int) {
-	return sovAsym(uint64((x << 1) ^ uint64((int64(x) >> 63))))
+	return sovAsym(uint64((x << 1) ^ uint64(int64(x) >> 63)))
 }
 func (m *M) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)

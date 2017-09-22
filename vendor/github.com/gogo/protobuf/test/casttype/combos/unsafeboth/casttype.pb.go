@@ -14,9 +14,9 @@
 */
 package casttype
 
-import proto "github.com/gogo/protobuf/proto"
-import fmt "fmt"
-import math "math"
+import "github.com/gogo/protobuf/proto"
+import "fmt"
+import "math"
 import _ "github.com/gogo/protobuf/gogoproto"
 
 import github_com_gogo_protobuf_test_casttype "github.com/gogo/protobuf/test/casttype"
@@ -24,14 +24,14 @@ import github_com_gogo_protobuf_test_casttype "github.com/gogo/protobuf/test/cas
 import github_com_gogo_protobuf_protoc_gen_gogo_descriptor "github.com/gogo/protobuf/protoc-gen-gogo/descriptor"
 import github_com_gogo_protobuf_proto "github.com/gogo/protobuf/proto"
 import compress_gzip "compress/gzip"
-import bytes "bytes"
+import "bytes"
 import io_ioutil "io/ioutil"
 
-import strings "strings"
-import reflect "reflect"
+import "strings"
+import "reflect"
 import github_com_gogo_protobuf_sortkeys "github.com/gogo/protobuf/sortkeys"
 
-import io "io"
+import "io"
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
@@ -1248,7 +1248,7 @@ func sovCasttype(x uint64) (n int) {
 	return n
 }
 func sozCasttype(x uint64) (n int) {
-	return sovCasttype(uint64((x << 1) ^ uint64((int64(x) >> 63))))
+	return sovCasttype(uint64((x << 1) ^ uint64(int64(x) >> 63)))
 }
 func (this *Castaway) String() string {
 	if this == nil {
@@ -2055,7 +2055,7 @@ func (m *Castaway) Unmarshal(dAtA []byte) error {
 						break
 					}
 				}
-				m.MyCustomMap[github_com_gogo_protobuf_test_casttype.MyStringType(mapkey)] = ((github_com_gogo_protobuf_test_casttype.MyUint64Type)(mapvalue))
+				m.MyCustomMap[github_com_gogo_protobuf_test_casttype.MyStringType(mapkey)] = (github_com_gogo_protobuf_test_casttype.MyUint64Type)(mapvalue)
 			} else {
 				var mapvalue github_com_gogo_protobuf_test_casttype.MyUint64Type
 				m.MyCustomMap[github_com_gogo_protobuf_test_casttype.MyStringType(mapkey)] = mapvalue

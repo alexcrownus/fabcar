@@ -17,7 +17,7 @@ package ctfe
 import (
 	"fmt"
 
-	ct "github.com/google/certificate-transparency-go"
+	"github.com/google/certificate-transparency-go"
 	"github.com/google/certificate-transparency-go/tls"
 	"github.com/google/trillian/crypto"
 )

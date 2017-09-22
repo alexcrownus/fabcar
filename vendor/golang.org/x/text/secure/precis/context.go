@@ -12,7 +12,7 @@ type catBitmap uint16
 
 const (
 	// These bits, once set depending on the current value, are never unset.
-	bJapanese catBitmap = 1 << iota
+	bJapanese                 catBitmap = 1 << iota
 	bArabicIndicDigit
 	bExtendedArabicIndicDigit
 

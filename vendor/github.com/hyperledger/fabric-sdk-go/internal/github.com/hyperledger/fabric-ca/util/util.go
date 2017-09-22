@@ -111,7 +111,7 @@ func RemoveQuotes(str string) string {
 	}
 	if (strings.HasPrefix(str, "'") && strings.HasSuffix(str, "'")) ||
 		(strings.HasPrefix(str, "\"") && strings.HasSuffix(str, "\"")) {
-		str = str[1 : len(str)-1]
+		str = str[1: len(str)-1]
 	}
 	return str
 }

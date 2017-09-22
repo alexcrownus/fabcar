@@ -76,15 +76,15 @@
 */
 package test
 
-import proto "github.com/gogo/protobuf/proto"
-import fmt "fmt"
-import math "math"
+import "github.com/gogo/protobuf/proto"
+import "fmt"
+import "math"
 import _ "github.com/gogo/protobuf/gogoproto"
 
 import github_com_gogo_protobuf_test_custom "github.com/gogo/protobuf/test/custom"
 import github_com_gogo_protobuf_test_custom_dash_type "github.com/gogo/protobuf/test/custom-dash-type"
 
-import bytes "bytes"
+import "bytes"
 import github_com_gogo_protobuf_sortkeys "github.com/gogo/protobuf/sortkeys"
 import github_com_gogo_protobuf_proto "github.com/gogo/protobuf/proto"
 
@@ -92,11 +92,11 @@ import github_com_gogo_protobuf_protoc_gen_gogo_descriptor "github.com/gogo/prot
 import compress_gzip "compress/gzip"
 import io_ioutil "io/ioutil"
 
-import strconv "strconv"
+import "strconv"
 
-import strings "strings"
-import sort "sort"
-import reflect "reflect"
+import "strings"
+import "sort"
+import "reflect"
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
@@ -492,7 +492,7 @@ func (*NinRepStruct) ProtoMessage()               {}
 func (*NinRepStruct) Descriptor() ([]byte, []int) { return fileDescriptorThetest, []int{9} }
 
 type NidEmbeddedStruct struct {
-	*NidOptNative    `protobuf:"bytes,1,opt,name=Field1,embedded=Field1" json:"Field1,omitempty"`
+	*NidOptNative                 `protobuf:"bytes,1,opt,name=Field1,embedded=Field1" json:"Field1,omitempty"`
 	Field200         NidOptNative `protobuf:"bytes,200,opt,name=Field200" json:"Field200"`
 	Field210         bool         `protobuf:"varint,210,opt,name=Field210" json:"Field210"`
 	XXX_unrecognized []byte       `json:"-"`
@@ -503,7 +503,7 @@ func (*NidEmbeddedStruct) ProtoMessage()               {}
 func (*NidEmbeddedStruct) Descriptor() ([]byte, []int) { return fileDescriptorThetest, []int{10} }
 
 type NinEmbeddedStruct struct {
-	*NidOptNative    `protobuf:"bytes,1,opt,name=Field1,embedded=Field1" json:"Field1,omitempty"`
+	*NidOptNative                  `protobuf:"bytes,1,opt,name=Field1,embedded=Field1" json:"Field1,omitempty"`
 	Field200         *NidOptNative `protobuf:"bytes,200,opt,name=Field200" json:"Field200,omitempty"`
 	Field210         *bool         `protobuf:"varint,210,opt,name=Field210" json:"Field210,omitempty"`
 	XXX_unrecognized []byte        `json:"-"`
@@ -617,7 +617,7 @@ func (*NinOptStructUnion) ProtoMessage()               {}
 func (*NinOptStructUnion) Descriptor() ([]byte, []int) { return fileDescriptorThetest, []int{20} }
 
 type NinEmbeddedStructUnion struct {
-	*NidOptNative    `protobuf:"bytes,1,opt,name=Field1,embedded=Field1" json:"Field1,omitempty"`
+	*NidOptNative                  `protobuf:"bytes,1,opt,name=Field1,embedded=Field1" json:"Field1,omitempty"`
 	Field200         *NinOptNative `protobuf:"bytes,200,opt,name=Field200" json:"Field200,omitempty"`
 	Field210         *bool         `protobuf:"varint,210,opt,name=Field210" json:"Field210,omitempty"`
 	XXX_unrecognized []byte        `json:"-"`
@@ -863,9 +863,9 @@ func (*Timer) ProtoMessage()               {}
 func (*Timer) Descriptor() ([]byte, []int) { return fileDescriptorThetest, []int{39} }
 
 type MyExtendable struct {
-	Field1                       *int64 `protobuf:"varint,1,opt,name=Field1" json:"Field1,omitempty"`
+	Field1           *int64      `protobuf:"varint,1,opt,name=Field1" json:"Field1,omitempty"`
 	proto.XXX_InternalExtensions `json:"-"`
-	XXX_unrecognized             []byte `json:"-"`
+	XXX_unrecognized []byte      `json:"-"`
 }
 
 func (m *MyExtendable) Reset()                    { *m = MyExtendable{} }
@@ -881,11 +881,11 @@ func (*MyExtendable) ExtensionRangeArray() []proto.ExtensionRange {
 }
 
 type OtherExtenable struct {
-	Field2                       *int64        `protobuf:"varint,2,opt,name=Field2" json:"Field2,omitempty"`
-	Field13                      *int64        `protobuf:"varint,13,opt,name=Field13" json:"Field13,omitempty"`
-	M                            *MyExtendable `protobuf:"bytes,1,opt,name=M" json:"M,omitempty"`
-	proto.XXX_InternalExtensions `json:"-"`
-	XXX_unrecognized             []byte `json:"-"`
+	Field2           *int64        `protobuf:"varint,2,opt,name=Field2" json:"Field2,omitempty"`
+	Field13          *int64        `protobuf:"varint,13,opt,name=Field13" json:"Field13,omitempty"`
+	M                *MyExtendable `protobuf:"bytes,1,opt,name=M" json:"M,omitempty"`
+	proto.XXX_InternalExtensions   `json:"-"`
+	XXX_unrecognized []byte        `json:"-"`
 }
 
 func (m *OtherExtenable) Reset()                    { *m = OtherExtenable{} }
@@ -1201,7 +1201,7 @@ func (*CustomNameCustomType) ProtoMessage()               {}
 func (*CustomNameCustomType) Descriptor() ([]byte, []int) { return fileDescriptorThetest, []int{50} }
 
 type CustomNameNinEmbeddedStructUnion struct {
-	*NidOptNative    `protobuf:"bytes,1,opt,name=Field1,embedded=Field1" json:"Field1,omitempty"`
+	*NidOptNative                  `protobuf:"bytes,1,opt,name=Field1,embedded=Field1" json:"Field1,omitempty"`
 	FieldA           *NinOptNative `protobuf:"bytes,200,opt,name=Field200" json:"Field200,omitempty"`
 	FieldB           *bool         `protobuf:"varint,210,opt,name=Field210" json:"Field210,omitempty"`
 	XXX_unrecognized []byte        `json:"-"`
@@ -1277,8 +1277,8 @@ func (*UnrecognizedWithInner_Inner) Descriptor() ([]byte, []int) {
 
 type UnrecognizedWithEmbed struct {
 	UnrecognizedWithEmbed_Embedded `protobuf:"bytes,1,opt,name=embedded,embedded=embedded" json:"embedded"`
-	Field2                         *string `protobuf:"bytes,2,opt,name=Field2" json:"Field2,omitempty"`
-	XXX_unrecognized               []byte  `json:"-"`
+	Field2           *string       `protobuf:"bytes,2,opt,name=Field2" json:"Field2,omitempty"`
+	XXX_unrecognized []byte        `json:"-"`
 }
 
 func (m *UnrecognizedWithEmbed) Reset()                    { *m = UnrecognizedWithEmbed{} }
@@ -24431,7 +24431,7 @@ func sovThetest(x uint64) (n int) {
 	return n
 }
 func sozThetest(x uint64) (n int) {
-	return sovThetest(uint64((x << 1) ^ uint64((int64(x) >> 63))))
+	return sovThetest(uint64((x << 1) ^ uint64(int64(x)>>63)))
 }
 func (this *NidOptNative) String() string {
 	if this == nil {

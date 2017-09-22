@@ -91,7 +91,7 @@ func readnum(path string) (uint, error) {
 	for ; m < n && b[m] == ' '; m++ {
 	}
 
-	return atoi(b[m : n-1]), nil
+	return atoi(b[m: n-1]), nil
 }
 
 func Getpid() (pid int) {

@@ -13,14 +13,14 @@ It has these top-level messages:
 */
 package vanity
 
-import proto "github.com/gogo/protobuf/proto"
-import fmt "fmt"
-import math "math"
+import "github.com/gogo/protobuf/proto"
+import "fmt"
+import "math"
 
-import strings "strings"
-import reflect "reflect"
+import "strings"
+import "reflect"
 
-import io "io"
+import "io"
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
@@ -171,7 +171,7 @@ func sovProto3(x uint64) (n int) {
 	return n
 }
 func sozProto3(x uint64) (n int) {
-	return sovProto3(uint64((x << 1) ^ uint64((int64(x) >> 63))))
+	return sovProto3(uint64((x << 1) ^ uint64(int64(x) >> 63)))
 }
 func (this *Aproto3) String() string {
 	if this == nil {

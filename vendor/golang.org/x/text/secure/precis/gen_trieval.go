@@ -25,9 +25,9 @@ type property uint8
 // The order of these constants matter. A Profile may consider runes to be
 // allowed either from pValid or idDisOrFreePVal.
 const (
-	unassigned property = iota << propShift
+	unassigned      property = iota << propShift
 	disallowed
-	idDisOrFreePVal // disallowed for Identifier, pValid for FreeForm
+	idDisOrFreePVal  // disallowed for Identifier, pValid for FreeForm
 	pValid
 )
 
@@ -43,26 +43,26 @@ const (
 	joiningT
 	joiningR
 	viramaModifier
-	viramaJoinT // Virama + JoiningT
-	latinSmallL // U+006c
+	viramaJoinT     // Virama + JoiningT
+	latinSmallL     // U+006c
 	greek
-	greekJoinT // Greek + JoiningT
+	greekJoinT      // Greek + JoiningT
 	hebrew
-	hebrewJoinT // Hebrew + JoiningT
-	japanese    // hirigana, katakana, han
+	hebrewJoinT     // Hebrew + JoiningT
+	japanese        // hirigana, katakana, han
 
 	// Special rune types associated with contextual rules defined in
 	// https://tools.ietf.org/html/rfc5892#appendix-A.
 	// ContextO
-	zeroWidthNonJoiner // rule 1
-	zeroWidthJoiner    // rule 2
+	zeroWidthNonJoiner  // rule 1
+	zeroWidthJoiner     // rule 2
 	// ContextJ
-	middleDot                // rule 3
-	greekLowerNumeralSign    // rule 4
-	hebrewPreceding          // rule 5 and 6
-	katakanaMiddleDot        // rule 7
-	arabicIndicDigit         // rule 8
-	extendedArabicIndicDigit // rule 9
+	middleDot                 // rule 3
+	greekLowerNumeralSign     // rule 4
+	hebrewPreceding           // rule 5 and 6
+	katakanaMiddleDot         // rule 7
+	arabicIndicDigit          // rule 8
+	extendedArabicIndicDigit  // rule 9
 
 	numCategories
 )

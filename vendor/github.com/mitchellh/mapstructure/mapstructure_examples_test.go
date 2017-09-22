@@ -180,8 +180,8 @@ func ExampleDecode_embeddedStruct() {
 		City string
 	}
 	type Person struct {
-		Family    `mapstructure:",squash"`
-		Location  `mapstructure:",squash"`
+		Family   `mapstructure:",squash"`
+		Location `mapstructure:",squash"`
 		FirstName string
 	}
 

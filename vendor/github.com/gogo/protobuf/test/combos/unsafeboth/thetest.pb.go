@@ -76,15 +76,15 @@
 */
 package test
 
-import proto "github.com/gogo/protobuf/proto"
-import fmt "fmt"
-import math "math"
+import "github.com/gogo/protobuf/proto"
+import "fmt"
+import "math"
 import _ "github.com/gogo/protobuf/gogoproto"
 
 import github_com_gogo_protobuf_test_custom "github.com/gogo/protobuf/test/custom"
 import github_com_gogo_protobuf_test_custom_dash_type "github.com/gogo/protobuf/test/custom-dash-type"
 
-import bytes "bytes"
+import "bytes"
 import github_com_gogo_protobuf_sortkeys "github.com/gogo/protobuf/sortkeys"
 import github_com_gogo_protobuf_proto "github.com/gogo/protobuf/proto"
 
@@ -92,15 +92,15 @@ import github_com_gogo_protobuf_protoc_gen_gogo_descriptor "github.com/gogo/prot
 import compress_gzip "compress/gzip"
 import io_ioutil "io/ioutil"
 
-import strconv "strconv"
+import "strconv"
 
-import strings "strings"
-import sort "sort"
-import reflect "reflect"
+import "strings"
+import "sort"
+import "reflect"
 
-import unsafe "unsafe"
+import "unsafe"
 
-import io "io"
+import "io"
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
@@ -24436,7 +24436,7 @@ func sovThetest(x uint64) (n int) {
 	return n
 }
 func sozThetest(x uint64) (n int) {
-	return sovThetest(uint64((x << 1) ^ uint64((int64(x) >> 63))))
+	return sovThetest(uint64((x << 1) ^ uint64(int64(x) >> 63)))
 }
 func (this *NidOptNative) String() string {
 	if this == nil {
@@ -25737,10 +25737,10 @@ func (m *NidOptNative) MarshalTo(dAtA []byte) (int, error) {
 	i = encodeVarintThetest(dAtA, i, uint64(m.Field6))
 	dAtA[i] = 0x38
 	i++
-	i = encodeVarintThetest(dAtA, i, uint64((uint32(m.Field7)<<1)^uint32((m.Field7>>31))))
+	i = encodeVarintThetest(dAtA, i, uint64((uint32(m.Field7)<<1)^uint32(m.Field7>>31)))
 	dAtA[i] = 0x40
 	i++
-	i = encodeVarintThetest(dAtA, i, uint64((uint64(m.Field8)<<1)^uint64((m.Field8>>63))))
+	i = encodeVarintThetest(dAtA, i, uint64((uint64(m.Field8)<<1)^uint64(m.Field8>>63)))
 	dAtA[i] = 0x4d
 	i++
 	*(*uint32)(unsafe.Pointer(&dAtA[i])) = m.Field9
@@ -25831,12 +25831,12 @@ func (m *NinOptNative) MarshalTo(dAtA []byte) (int, error) {
 	if m.Field7 != nil {
 		dAtA[i] = 0x38
 		i++
-		i = encodeVarintThetest(dAtA, i, uint64((uint32(*m.Field7)<<1)^uint32((*m.Field7>>31))))
+		i = encodeVarintThetest(dAtA, i, uint64((uint32(*m.Field7)<<1)^uint32(*m.Field7>>31)))
 	}
 	if m.Field8 != nil {
 		dAtA[i] = 0x40
 		i++
-		i = encodeVarintThetest(dAtA, i, uint64((uint64(*m.Field8)<<1)^uint64((*m.Field8>>63))))
+		i = encodeVarintThetest(dAtA, i, uint64((uint64(*m.Field8)<<1)^uint64(*m.Field8>>63)))
 	}
 	if m.Field9 != nil {
 		dAtA[i] = 0x4d
@@ -25953,7 +25953,7 @@ func (m *NidRepNative) MarshalTo(dAtA []byte) (int, error) {
 		for _, num := range m.Field7 {
 			dAtA[i] = 0x38
 			i++
-			x1 := (uint32(num) << 1) ^ uint32((num >> 31))
+			x1 := (uint32(num) << 1) ^ uint32(num >> 31)
 			for x1 >= 1<<7 {
 				dAtA[i] = uint8(uint64(x1)&0x7f | 0x80)
 				x1 >>= 7
@@ -25967,7 +25967,7 @@ func (m *NidRepNative) MarshalTo(dAtA []byte) (int, error) {
 		for _, num := range m.Field8 {
 			dAtA[i] = 0x40
 			i++
-			x2 := (uint64(num) << 1) ^ uint64((num >> 63))
+			x2 := (uint64(num) << 1) ^ uint64(num >> 63)
 			for x2 >= 1<<7 {
 				dAtA[i] = uint8(uint64(x2)&0x7f | 0x80)
 				x2 >>= 7
@@ -26113,7 +26113,7 @@ func (m *NinRepNative) MarshalTo(dAtA []byte) (int, error) {
 		for _, num := range m.Field7 {
 			dAtA[i] = 0x38
 			i++
-			x3 := (uint32(num) << 1) ^ uint32((num >> 31))
+			x3 := (uint32(num) << 1) ^ uint32(num >> 31)
 			for x3 >= 1<<7 {
 				dAtA[i] = uint8(uint64(x3)&0x7f | 0x80)
 				x3 >>= 7
@@ -26127,7 +26127,7 @@ func (m *NinRepNative) MarshalTo(dAtA []byte) (int, error) {
 		for _, num := range m.Field8 {
 			dAtA[i] = 0x40
 			i++
-			x4 := (uint64(num) << 1) ^ uint64((num >> 63))
+			x4 := (uint64(num) << 1) ^ uint64(num >> 63)
 			for x4 >= 1<<7 {
 				dAtA[i] = uint8(uint64(x4)&0x7f | 0x80)
 				x4 >>= 7
@@ -26317,7 +26317,7 @@ func (m *NidRepPackedNative) MarshalTo(dAtA []byte) (int, error) {
 		dAtA13 := make([]byte, len(m.Field7)*5)
 		var j14 int
 		for _, num := range m.Field7 {
-			x15 := (uint32(num) << 1) ^ uint32((num >> 31))
+			x15 := (uint32(num) << 1) ^ uint32(num >> 31)
 			for x15 >= 1<<7 {
 				dAtA13[j14] = uint8(uint64(x15)&0x7f | 0x80)
 				j14++
@@ -26335,7 +26335,7 @@ func (m *NidRepPackedNative) MarshalTo(dAtA []byte) (int, error) {
 		var j16 int
 		dAtA18 := make([]byte, len(m.Field8)*10)
 		for _, num := range m.Field8 {
-			x17 := (uint64(num) << 1) ^ uint64((num >> 63))
+			x17 := (uint64(num) << 1) ^ uint64(num >> 63)
 			for x17 >= 1<<7 {
 				dAtA18[j16] = uint8(uint64(x17)&0x7f | 0x80)
 				j16++
@@ -26511,7 +26511,7 @@ func (m *NinRepPackedNative) MarshalTo(dAtA []byte) (int, error) {
 		dAtA27 := make([]byte, len(m.Field7)*5)
 		var j28 int
 		for _, num := range m.Field7 {
-			x29 := (uint32(num) << 1) ^ uint32((num >> 31))
+			x29 := (uint32(num) << 1) ^ uint32(num >> 31)
 			for x29 >= 1<<7 {
 				dAtA27[j28] = uint8(uint64(x29)&0x7f | 0x80)
 				j28++
@@ -26529,7 +26529,7 @@ func (m *NinRepPackedNative) MarshalTo(dAtA []byte) (int, error) {
 		var j30 int
 		dAtA32 := make([]byte, len(m.Field8)*10)
 		for _, num := range m.Field8 {
-			x31 := (uint64(num) << 1) ^ uint64((num >> 63))
+			x31 := (uint64(num) << 1) ^ uint64(num >> 63)
 			for x31 >= 1<<7 {
 				dAtA32[j30] = uint8(uint64(x31)&0x7f | 0x80)
 				j30++
@@ -26642,7 +26642,7 @@ func (m *NidOptStruct) MarshalTo(dAtA []byte) (int, error) {
 	i = encodeVarintThetest(dAtA, i, uint64(m.Field6))
 	dAtA[i] = 0x38
 	i++
-	i = encodeVarintThetest(dAtA, i, uint64((uint32(m.Field7)<<1)^uint32((m.Field7>>31))))
+	i = encodeVarintThetest(dAtA, i, uint64((uint32(m.Field7)<<1)^uint32(m.Field7>>31)))
 	dAtA[i] = 0x42
 	i++
 	i = encodeVarintThetest(dAtA, i, uint64(m.Field8.Size()))
@@ -26730,7 +26730,7 @@ func (m *NinOptStruct) MarshalTo(dAtA []byte) (int, error) {
 	if m.Field7 != nil {
 		dAtA[i] = 0x38
 		i++
-		i = encodeVarintThetest(dAtA, i, uint64((uint32(*m.Field7)<<1)^uint32((*m.Field7>>31))))
+		i = encodeVarintThetest(dAtA, i, uint64((uint32(*m.Field7)<<1)^uint32(*m.Field7>>31)))
 	}
 	if m.Field8 != nil {
 		dAtA[i] = 0x42
@@ -26836,7 +26836,7 @@ func (m *NidRepStruct) MarshalTo(dAtA []byte) (int, error) {
 		for _, num := range m.Field7 {
 			dAtA[i] = 0x38
 			i++
-			x39 := (uint32(num) << 1) ^ uint32((num >> 31))
+			x39 := (uint32(num) << 1) ^ uint32(num >> 31)
 			for x39 >= 1<<7 {
 				dAtA[i] = uint8(uint64(x39)&0x7f | 0x80)
 				x39 >>= 7
@@ -26965,7 +26965,7 @@ func (m *NinRepStruct) MarshalTo(dAtA []byte) (int, error) {
 		for _, num := range m.Field7 {
 			dAtA[i] = 0x38
 			i++
-			x40 := (uint32(num) << 1) ^ uint32((num >> 31))
+			x40 := (uint32(num) << 1) ^ uint32(num >> 31)
 			for x40 >= 1<<7 {
 				dAtA[i] = uint8(uint64(x40)&0x7f | 0x80)
 				x40 >>= 7
@@ -27547,7 +27547,7 @@ func (m *NinOptStructUnion) MarshalTo(dAtA []byte) (int, error) {
 	if m.Field7 != nil {
 		dAtA[i] = 0x38
 		i++
-		i = encodeVarintThetest(dAtA, i, uint64((uint32(*m.Field7)<<1)^uint32((*m.Field7>>31))))
+		i = encodeVarintThetest(dAtA, i, uint64((uint32(*m.Field7)<<1)^uint32(*m.Field7>>31)))
 	}
 	if m.Field13 != nil {
 		dAtA[i] = 0x68
@@ -28578,12 +28578,12 @@ func (m *NinOptNativeDefault) MarshalTo(dAtA []byte) (int, error) {
 	if m.Field7 != nil {
 		dAtA[i] = 0x38
 		i++
-		i = encodeVarintThetest(dAtA, i, uint64((uint32(*m.Field7)<<1)^uint32((*m.Field7>>31))))
+		i = encodeVarintThetest(dAtA, i, uint64((uint32(*m.Field7)<<1)^uint32(*m.Field7>>31)))
 	}
 	if m.Field8 != nil {
 		dAtA[i] = 0x40
 		i++
-		i = encodeVarintThetest(dAtA, i, uint64((uint64(*m.Field8)<<1)^uint64((*m.Field8>>63))))
+		i = encodeVarintThetest(dAtA, i, uint64((uint64(*m.Field8)<<1)^uint64(*m.Field8>>63)))
 	}
 	if m.Field9 != nil {
 		dAtA[i] = 0x4d
@@ -28703,10 +28703,10 @@ func (m *CustomNameNidOptNative) MarshalTo(dAtA []byte) (int, error) {
 	i = encodeVarintThetest(dAtA, i, uint64(m.FieldF))
 	dAtA[i] = 0x38
 	i++
-	i = encodeVarintThetest(dAtA, i, uint64((uint32(m.FieldG)<<1)^uint32((m.FieldG>>31))))
+	i = encodeVarintThetest(dAtA, i, uint64((uint32(m.FieldG)<<1)^uint32(m.FieldG>>31)))
 	dAtA[i] = 0x40
 	i++
-	i = encodeVarintThetest(dAtA, i, uint64((uint64(m.FieldH)<<1)^uint64((m.FieldH>>63))))
+	i = encodeVarintThetest(dAtA, i, uint64((uint64(m.FieldH)<<1)^uint64(m.FieldH>>63)))
 	dAtA[i] = 0x4d
 	i++
 	*(*uint32)(unsafe.Pointer(&dAtA[i])) = m.FieldI
@@ -28797,12 +28797,12 @@ func (m *CustomNameNinOptNative) MarshalTo(dAtA []byte) (int, error) {
 	if m.FieldG != nil {
 		dAtA[i] = 0x38
 		i++
-		i = encodeVarintThetest(dAtA, i, uint64((uint32(*m.FieldG)<<1)^uint32((*m.FieldG>>31))))
+		i = encodeVarintThetest(dAtA, i, uint64((uint32(*m.FieldG)<<1)^uint32(*m.FieldG>>31)))
 	}
 	if m.FieldH != nil {
 		dAtA[i] = 0x40
 		i++
-		i = encodeVarintThetest(dAtA, i, uint64((uint64(*m.FieldH)<<1)^uint64((*m.FieldH>>63))))
+		i = encodeVarintThetest(dAtA, i, uint64((uint64(*m.FieldH)<<1)^uint64(*m.FieldH>>63)))
 	}
 	if m.FieldI != nil {
 		dAtA[i] = 0x4d
@@ -28919,7 +28919,7 @@ func (m *CustomNameNinRepNative) MarshalTo(dAtA []byte) (int, error) {
 		for _, num := range m.FieldG {
 			dAtA[i] = 0x38
 			i++
-			x80 := (uint32(num) << 1) ^ uint32((num >> 31))
+			x80 := (uint32(num) << 1) ^ uint32(num >> 31)
 			for x80 >= 1<<7 {
 				dAtA[i] = uint8(uint64(x80)&0x7f | 0x80)
 				x80 >>= 7
@@ -28933,7 +28933,7 @@ func (m *CustomNameNinRepNative) MarshalTo(dAtA []byte) (int, error) {
 		for _, num := range m.FieldH {
 			dAtA[i] = 0x40
 			i++
-			x81 := (uint64(num) << 1) ^ uint64((num >> 63))
+			x81 := (uint64(num) << 1) ^ uint64(num >> 63)
 			for x81 >= 1<<7 {
 				dAtA[i] = uint8(uint64(x81)&0x7f | 0x80)
 				x81 >>= 7
@@ -29073,7 +29073,7 @@ func (m *CustomNameNinStruct) MarshalTo(dAtA []byte) (int, error) {
 	if m.FieldF != nil {
 		dAtA[i] = 0x38
 		i++
-		i = encodeVarintThetest(dAtA, i, uint64((uint32(*m.FieldF)<<1)^uint32((*m.FieldF>>31))))
+		i = encodeVarintThetest(dAtA, i, uint64((uint32(*m.FieldF)<<1)^uint32(*m.FieldF>>31)))
 	}
 	if m.FieldG != nil {
 		dAtA[i] = 0x42

@@ -28,7 +28,7 @@
 
 package custombytesnonstruct
 
-import testing "testing"
+import "testing"
 
 func TestCustomBytesNonStruct(t *testing.T) {
 }

@@ -46,9 +46,9 @@ var testCases = []testCase{
 		opts:  getOpts(HandleFinalSigma(true)),
 	},
 
-	2: { // Title cased runes.
-		lang:  supported,
-		src:   "ǅA",
+	2: {// Title cased runes.
+		lang: supported,
+		src: "ǅA",
 		title: "ǅa",
 		lower: "ǆa",
 		upper: "ǄA",

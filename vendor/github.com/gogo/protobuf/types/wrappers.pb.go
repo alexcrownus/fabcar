@@ -21,16 +21,16 @@ It has these top-level messages:
 */
 package types
 
-import proto "github.com/gogo/protobuf/proto"
-import fmt "fmt"
-import math "math"
+import "github.com/gogo/protobuf/proto"
+import "fmt"
+import "math"
 
-import bytes "bytes"
+import "bytes"
 
-import strings "strings"
-import reflect "reflect"
+import "strings"
+import "reflect"
 
-import io "io"
+import "io"
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
@@ -1391,7 +1391,7 @@ func sovWrappers(x uint64) (n int) {
 	return n
 }
 func sozWrappers(x uint64) (n int) {
-	return sovWrappers(uint64((x << 1) ^ uint64((int64(x) >> 63))))
+	return sovWrappers(uint64((x << 1) ^ uint64(int64(x) >> 63)))
 }
 func (this *DoubleValue) String() string {
 	if this == nil {

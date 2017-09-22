@@ -76,15 +76,15 @@
 */
 package test
 
-import proto "github.com/gogo/protobuf/proto"
-import fmt "fmt"
-import math "math"
+import "github.com/gogo/protobuf/proto"
+import "fmt"
+import "math"
 import _ "github.com/gogo/protobuf/gogoproto"
 
 import github_com_gogo_protobuf_test_custom "github.com/gogo/protobuf/test/custom"
 import github_com_gogo_protobuf_test_custom_dash_type "github.com/gogo/protobuf/test/custom-dash-type"
 
-import bytes "bytes"
+import "bytes"
 import github_com_gogo_protobuf_sortkeys "github.com/gogo/protobuf/sortkeys"
 import github_com_gogo_protobuf_proto "github.com/gogo/protobuf/proto"
 
@@ -92,13 +92,13 @@ import github_com_gogo_protobuf_protoc_gen_gogo_descriptor "github.com/gogo/prot
 import compress_gzip "compress/gzip"
 import io_ioutil "io/ioutil"
 
-import strconv "strconv"
+import "strconv"
 
-import strings "strings"
-import sort "sort"
-import reflect "reflect"
+import "strings"
+import "sort"
+import "reflect"
 
-import io "io"
+import "io"
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
@@ -24434,7 +24434,7 @@ func sovThetest(x uint64) (n int) {
 	return n
 }
 func sozThetest(x uint64) (n int) {
-	return sovThetest(uint64((x << 1) ^ uint64((int64(x) >> 63))))
+	return sovThetest(uint64((x << 1) ^ uint64(int64(x) >> 63)))
 }
 func (this *NidOptNative) String() string {
 	if this == nil {

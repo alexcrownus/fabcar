@@ -16,18 +16,17 @@ It has these top-level messages:
 */
 package stdtypes
 
-import proto "github.com/gogo/protobuf/proto"
-import fmt "fmt"
-import math "math"
+import "github.com/gogo/protobuf/proto"
+import "fmt"
+import "math"
 import _ "github.com/gogo/protobuf/gogoproto"
 import _ "github.com/gogo/protobuf/types"
-import _ "github.com/gogo/protobuf/types"
 
-import time "time"
+import "time"
 import github_com_gogo_protobuf_types "github.com/gogo/protobuf/types"
 
-import strings "strings"
-import reflect "reflect"
+import "strings"
+import "reflect"
 import github_com_gogo_protobuf_sortkeys "github.com/gogo/protobuf/sortkeys"
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1304,7 +1303,7 @@ func sovStdtypes(x uint64) (n int) {
 	return n
 }
 func sozStdtypes(x uint64) (n int) {
-	return sovStdtypes(uint64((x << 1) ^ uint64((int64(x) >> 63))))
+	return sovStdtypes(uint64((x << 1) ^ uint64(int64(x)>>63)))
 }
 
 func init() { proto.RegisterFile("stdtypes.proto", fileDescriptorStdtypes) }

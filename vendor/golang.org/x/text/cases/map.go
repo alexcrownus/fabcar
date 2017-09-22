@@ -530,14 +530,14 @@ func elUpper(c *context) bool {
 		switch r, _ := utf8.DecodeRune(c.src[c.pSrc:]); r {
 		// Above and Iota Subscript
 		case 0x0300, // U+0300 COMBINING GRAVE ACCENT
-			0x0301, // U+0301 COMBINING ACUTE ACCENT
-			0x0304, // U+0304 COMBINING MACRON
-			0x0306, // U+0306 COMBINING BREVE
-			0x0308, // U+0308 COMBINING DIAERESIS
-			0x0313, // U+0313 COMBINING COMMA ABOVE
-			0x0314, // U+0314 COMBINING REVERSED COMMA ABOVE
-			0x0342, // U+0342 COMBINING GREEK PERISPOMENI
-			0x0345: // U+0345 COMBINING GREEK YPOGEGRAMMENI
+			0x0301,  // U+0301 COMBINING ACUTE ACCENT
+			0x0304,  // U+0304 COMBINING MACRON
+			0x0306,  // U+0306 COMBINING BREVE
+			0x0308,  // U+0308 COMBINING DIAERESIS
+			0x0313,  // U+0313 COMBINING COMMA ABOVE
+			0x0314,  // U+0314 COMBINING REVERSED COMMA ABOVE
+			0x0342,  // U+0342 COMBINING GREEK PERISPOMENI
+			0x0345:  // U+0345 COMBINING GREEK YPOGEGRAMMENI
 			// No-op. Gobble the modifier.
 
 		default:
@@ -546,9 +546,9 @@ func elUpper(c *context) bool {
 				c.unreadRune()
 				return true
 
-			// We don't need to test for IotaSubscript as the only rune that
-			// qualifies (U+0345) was already excluded in the switch statement
-			// above. See A.4.
+				// We don't need to test for IotaSubscript as the only rune that
+				// qualifies (U+0345) was already excluded in the switch statement
+				// above. See A.4.
 
 			case cccAbove:
 				return c.copy()
@@ -681,13 +681,13 @@ func ltUpper(f mapFunc) mapFunc {
 					if c.dst[oldPDst] == 'I' && c.pDst == oldPDst+1 && c.src[c.pSrc] == 0xcc {
 						s := ""
 						switch c.src[c.pSrc+1] {
-						case 0x80: // U+0300 COMBINING GRAVE ACCENT
+						case 0x80:       // U+0300 COMBINING GRAVE ACCENT
 							s = "\u00cc" // U+00CC LATIN CAPITAL LETTER I WITH GRAVE
-						case 0x81: // U+0301 COMBINING ACUTE ACCENT
+						case 0x81:       // U+0301 COMBINING ACUTE ACCENT
 							s = "\u00cd" // U+00CD LATIN CAPITAL LETTER I WITH ACUTE
-						case 0x83: // U+0303 COMBINING TILDE
+						case 0x83:       // U+0303 COMBINING TILDE
 							s = "\u0128" // U+0128 LATIN CAPITAL LETTER I WITH TILDE
-						case 0x88: // U+0308 COMBINING DIAERESIS
+						case 0x88:       // U+0308 COMBINING DIAERESIS
 							s = "\u00cf" // U+00CF LATIN CAPITAL LETTER I WITH DIAERESIS
 						default:
 						}
@@ -744,8 +744,8 @@ func aztrLower(c *context) (done bool) {
 
 	i := 0
 Loop:
-	// We check for up to n ignorables before \u0307. As \u0307 is an
-	// ignorable as well, n is maxIgnorable-1.
+// We check for up to n ignorables before \u0307. As \u0307 is an
+// ignorable as well, n is maxIgnorable-1.
 	for ; i < maxIgnorable && c.next(); i++ {
 		switch c.info.cccType() {
 		case cccAbove:

@@ -697,7 +697,7 @@ func (s *String) readASN1(out *String, outTag *asn1.Tag, skipHeader bool) bool {
 			return false
 		}
 
-		lenBytes := String((*s)[2 : 2+lenLen])
+		lenBytes := String((*s)[2: 2+lenLen])
 		if !lenBytes.readUnsigned(&len32, int(lenLen)) {
 			return false
 		}

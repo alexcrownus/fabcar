@@ -23,7 +23,7 @@ import (
 	"net/http"
 	"strings"
 
-	ct "github.com/google/certificate-transparency-go"
+	"github.com/google/certificate-transparency-go"
 	"github.com/google/certificate-transparency-go/gossip"
 )
 

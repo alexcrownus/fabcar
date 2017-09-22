@@ -290,24 +290,24 @@ func startACMEServerStub(t *testing.T, man *Manager, domain string) (url string,
 			if err := discoTmpl.Execute(w, ca.URL); err != nil {
 				t.Errorf("discoTmpl: %v", err)
 			}
-		// client key registration
+			// client key registration
 		case "/new-reg":
 			w.Write([]byte("{}"))
-		// domain authorization
+			// domain authorization
 		case "/new-authz":
 			w.Header().Set("Location", ca.URL+"/authz/1")
 			w.WriteHeader(http.StatusCreated)
 			if err := authzTmpl.Execute(w, ca.URL); err != nil {
 				t.Errorf("authzTmpl: %v", err)
 			}
-		// accept tls-sni-02 challenge
+			// accept tls-sni-02 challenge
 		case "/challenge/2":
 			verifyTokenCert()
 			w.Write([]byte("{}"))
-		// authorization status
+			// authorization status
 		case "/authz/1":
 			w.Write([]byte(`{"status": "valid"}`))
-		// cert request
+			// cert request
 		case "/new-cert":
 			var req struct {
 				CSR string `json:"csr"`
@@ -329,7 +329,7 @@ func startACMEServerStub(t *testing.T, man *Manager, domain string) (url string,
 			w.Header().Set("Link", chainUp)
 			w.WriteHeader(http.StatusCreated)
 			w.Write(der)
-		// CA chain cert
+			// CA chain cert
 		case "/ca-cert":
 			der, err := dummyCert(nil, "ca")
 			if err != nil {

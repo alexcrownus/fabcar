@@ -92,7 +92,7 @@ func testHashes(t *testing.T) {
 
 		h.Reset()
 		for j := 0; j < i; j++ {
-			h.Write(input[j : j+1])
+			h.Write(input[j: j+1])
 		}
 
 		sum = h.Sum(sum[:0])
@@ -134,11 +134,11 @@ func testHashes2X(t *testing.T) {
 
 		h.Reset()
 		for j := 0; j < len(input); j++ {
-			h.Write(input[j : j+1])
+			h.Write(input[j: j+1])
 		}
 		for j := 0; j < len(sum); j++ {
 			h = h.Clone()
-			if _, err := h.Read(sum[j : j+1]); err != nil {
+			if _, err := h.Read(sum[j: j+1]); err != nil {
 				t.Fatalf("#%d (byte-by-byte) - Read %d: error from Read: %v", i, j, err)
 			}
 		}

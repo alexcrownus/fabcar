@@ -17,7 +17,7 @@
 package gossip
 
 import (
-	ct "github.com/google/certificate-transparency-go"
+	"github.com/google/certificate-transparency-go"
 )
 
 // STHVersion reflects the STH Version field in RFC6862[-bis]

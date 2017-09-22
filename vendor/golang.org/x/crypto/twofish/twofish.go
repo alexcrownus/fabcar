@@ -273,7 +273,7 @@ func (c *Cipher) Encrypt(dst, src []byte) {
 	id ^= c.k[3]
 
 	for i := 0; i < 8; i++ {
-		k := c.k[8+i*4 : 12+i*4]
+		k := c.k[8+i*4: 12+i*4]
 		t2 := S2[byte(ib)] ^ S3[byte(ib>>8)] ^ S4[byte(ib>>16)] ^ S1[byte(ib>>24)]
 		t1 := S1[byte(ia)] ^ S2[byte(ia>>8)] ^ S3[byte(ia>>16)] ^ S4[byte(ia>>24)] + t2
 		ic = ror(ic^(t1+k[0]), 1)
@@ -317,7 +317,7 @@ func (c *Cipher) Decrypt(dst, src []byte) {
 	id := tb ^ c.k[5]
 
 	for i := 8; i > 0; i-- {
-		k := c.k[4+i*4 : 8+i*4]
+		k := c.k[4+i*4: 8+i*4]
 		t2 := S2[byte(id)] ^ S3[byte(id>>8)] ^ S4[byte(id>>16)] ^ S1[byte(id>>24)]
 		t1 := S1[byte(ic)] ^ S2[byte(ic>>8)] ^ S3[byte(ic>>16)] ^ S4[byte(ic>>24)] + t2
 		ia = rol(ia, 1) ^ (t1 + k[2])

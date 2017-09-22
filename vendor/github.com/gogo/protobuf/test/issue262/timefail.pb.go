@@ -13,20 +13,20 @@
 */
 package timefail
 
-import proto "github.com/gogo/protobuf/proto"
-import fmt "fmt"
-import math "math"
+import "github.com/gogo/protobuf/proto"
+import "fmt"
+import "math"
 import _ "github.com/gogo/protobuf/gogoproto"
 import _ "github.com/gogo/protobuf/types"
 
-import time "time"
+import "time"
 
-import strings "strings"
-import reflect "reflect"
+import "strings"
+import "reflect"
 
 import github_com_gogo_protobuf_types "github.com/gogo/protobuf/types"
 
-import io "io"
+import "io"
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
@@ -186,7 +186,7 @@ func sovTimefail(x uint64) (n int) {
 	return n
 }
 func sozTimefail(x uint64) (n int) {
-	return sovTimefail(uint64((x << 1) ^ uint64((int64(x) >> 63))))
+	return sovTimefail(uint64((x << 1) ^ uint64(int64(x) >> 63)))
 }
 func (this *TimeFail) String() string {
 	if this == nil {

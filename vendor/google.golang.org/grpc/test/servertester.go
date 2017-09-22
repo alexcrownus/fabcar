@@ -62,7 +62,7 @@ func newServerTesterFromConn(t testing.TB, cc io.ReadWriteCloser) *serverTester 
 	}
 	st.hpackEnc = hpack.NewEncoder(&st.headerBuf)
 	st.fr = http2.NewFramer(cc, cc)
-	st.fr.ReadMetaHeaders = hpack.NewDecoder(4096 /*initialHeaderTableSize*/, nil)
+	st.fr.ReadMetaHeaders = hpack.NewDecoder(4096 /*initialHeaderTableSize*/ , nil)
 
 	return st
 }

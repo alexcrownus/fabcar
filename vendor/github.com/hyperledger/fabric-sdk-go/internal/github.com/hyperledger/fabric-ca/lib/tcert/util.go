@@ -209,7 +209,7 @@ func ValidateCert(cert *x509.Certificate) bool {
 	currentTime := time.Now()
 	diffFromExpiry := notAfter.Sub(currentTime)
 	diffFromStart := currentTime.Sub(notBefore)
-	return ((diffFromExpiry > 0) && (diffFromStart > 0))
+	return (diffFromExpiry > 0) && (diffFromStart > 0)
 }
 
 // CBCPKCS7Decrypt combines CBC decryption and PKCS7 unpadding

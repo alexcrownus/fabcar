@@ -60,7 +60,7 @@ import (
 
 	"github.com/gogo/protobuf/gogoproto"
 	"github.com/gogo/protobuf/proto"
-	descriptor "github.com/gogo/protobuf/protoc-gen-gogo/descriptor"
+	"github.com/gogo/protobuf/protoc-gen-gogo/descriptor"
 	plugin "github.com/gogo/protobuf/protoc-gen-gogo/plugin"
 )
 
@@ -2110,7 +2110,7 @@ func (g *Generator) generateMessage(message *Descriptor) {
 			typename, wiretype := g.GoType(message, field)
 			jsonName := *field.Name
 			jsonTag := jsonName + ",omitempty"
-			repeatedNativeType := (!field.IsMessage() && !gogoproto.IsCustomType(field) && field.IsRepeated())
+			repeatedNativeType := !field.IsMessage() && !gogoproto.IsCustomType(field) && field.IsRepeated()
 			if !gogoproto.IsNullable(field) && !repeatedNativeType {
 				jsonTag = jsonName
 			}

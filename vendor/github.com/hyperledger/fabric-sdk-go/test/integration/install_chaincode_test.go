@@ -15,7 +15,7 @@ import (
 	"testing"
 	"time"
 
-	packager "github.com/hyperledger/fabric-sdk-go/pkg/fabric-client/packager"
+	"github.com/hyperledger/fabric-sdk-go/pkg/fabric-client/packager"
 )
 
 const (

@@ -70,7 +70,7 @@ func TestPathRoot(t *testing.T) {
 	assertPath(t,
 		"$",
 		buildPath(
-		// empty
+			// empty
 		))
 }
 

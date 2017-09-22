@@ -87,7 +87,7 @@ func ExpiryTime(chain []*x509.Certificate) (notAfter time.Time) {
 func MonthsValid(c *x509.Certificate) int {
 	issued := c.NotBefore
 	expiry := c.NotAfter
-	years := (expiry.Year() - issued.Year())
+	years := expiry.Year() - issued.Year()
 	months := years*12 + int(expiry.Month()) - int(issued.Month())
 
 	// Round up if valid for less than a full month

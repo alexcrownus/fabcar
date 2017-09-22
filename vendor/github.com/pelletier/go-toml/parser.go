@@ -130,7 +130,7 @@ func (p *tomlParser) parseGroupArray() tomlParserStateFn {
 		if strings.HasPrefix(tableKey, prefix) {
 			p.seenTableKeys = append(p.seenTableKeys[:ii], p.seenTableKeys[ii+1:]...)
 		} else {
-			found = (tableKey == key.val)
+			found = tableKey == key.val
 			ii++
 		}
 	}

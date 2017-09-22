@@ -16,15 +16,15 @@
 */
 package fuzztests
 
-import proto "github.com/gogo/protobuf/proto"
-import fmt "fmt"
-import math "math"
+import "github.com/gogo/protobuf/proto"
+import "fmt"
+import "math"
 import _ "github.com/gogo/protobuf/gogoproto"
 
-import strings "strings"
-import reflect "reflect"
+import "strings"
+import "reflect"
 
-import io "io"
+import "io"
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
@@ -703,7 +703,7 @@ func (m *NinRepPackedNative) MarshalTo(dAtA []byte) (int, error) {
 		dAtA11 := make([]byte, len(m.Field7)*5)
 		var j12 int
 		for _, num := range m.Field7 {
-			x13 := (uint32(num) << 1) ^ uint32((num >> 31))
+			x13 := (uint32(num) << 1) ^ uint32(num >> 31)
 			for x13 >= 1<<7 {
 				dAtA11[j12] = uint8(uint64(x13)&0x7f | 0x80)
 				j12++
@@ -721,7 +721,7 @@ func (m *NinRepPackedNative) MarshalTo(dAtA []byte) (int, error) {
 		var j14 int
 		dAtA16 := make([]byte, len(m.Field8)*10)
 		for _, num := range m.Field8 {
-			x15 := (uint64(num) << 1) ^ uint64((num >> 63))
+			x15 := (uint64(num) << 1) ^ uint64(num >> 63)
 			for x15 >= 1<<7 {
 				dAtA16[j14] = uint8(uint64(x15)&0x7f | 0x80)
 				j14++
@@ -878,12 +878,12 @@ func (m *NinOptNative) MarshalTo(dAtA []byte) (int, error) {
 	if m.Field7 != nil {
 		dAtA[i] = 0x38
 		i++
-		i = encodeVarintFuzz(dAtA, i, uint64((uint32(*m.Field7)<<1)^uint32((*m.Field7>>31))))
+		i = encodeVarintFuzz(dAtA, i, uint64((uint32(*m.Field7)<<1)^uint32(*m.Field7>>31)))
 	}
 	if m.Field8 != nil {
 		dAtA[i] = 0x40
 		i++
-		i = encodeVarintFuzz(dAtA, i, uint64((uint64(*m.Field8)<<1)^uint64((*m.Field8>>63))))
+		i = encodeVarintFuzz(dAtA, i, uint64((uint64(*m.Field8)<<1)^uint64(*m.Field8>>63)))
 	}
 	if m.Field9 != nil {
 		dAtA[i] = 0x4d
@@ -986,7 +986,7 @@ func (m *NinOptStruct) MarshalTo(dAtA []byte) (int, error) {
 	if m.Field7 != nil {
 		dAtA[i] = 0x38
 		i++
-		i = encodeVarintFuzz(dAtA, i, uint64((uint32(*m.Field7)<<1)^uint32((*m.Field7>>31))))
+		i = encodeVarintFuzz(dAtA, i, uint64((uint32(*m.Field7)<<1)^uint32(*m.Field7>>31)))
 	}
 	if m.Field8 != nil {
 		dAtA[i] = 0x42
@@ -1245,7 +1245,7 @@ func sovFuzz(x uint64) (n int) {
 	return n
 }
 func sozFuzz(x uint64) (n int) {
-	return sovFuzz(uint64((x << 1) ^ uint64((int64(x) >> 63))))
+	return sovFuzz(uint64((x << 1) ^ uint64(int64(x) >> 63)))
 }
 func (m *Nil) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)

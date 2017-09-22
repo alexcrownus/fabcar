@@ -181,7 +181,7 @@ func genStates(ct *colltab.ContractTrieSet, sis []stridx) (int, error) {
 			(*ct)[i] = fe
 		}
 	}
-	sort.Sort(entrySort((*ct)[start : start+n]))
+	sort.Sort(entrySort((*ct)[start: start+n]))
 	return n, nil
 }
 

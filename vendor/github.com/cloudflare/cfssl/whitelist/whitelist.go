@@ -127,7 +127,7 @@ func (wl *Basic) UnmarshalJSON(in []byte) error {
 	wl.lock.Lock()
 	defer wl.lock.Unlock()
 
-	netString := strings.TrimSpace(string(in[1 : len(in)-1]))
+	netString := strings.TrimSpace(string(in[1: len(in)-1]))
 	nets := strings.Split(netString, ",")
 
 	wl.whitelist = map[string]bool{}

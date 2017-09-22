@@ -773,7 +773,7 @@ pluralizeListTitles = false
 	for i := 0; i < b.N; i++ {
 		rd.Seek(0, os.SEEK_SET)
 		ch := lexToml(rd)
-		for _ = range ch {
+		for range ch {
 		}
 	}
 }

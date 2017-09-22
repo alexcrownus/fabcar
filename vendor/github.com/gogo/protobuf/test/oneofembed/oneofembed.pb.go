@@ -15,8 +15,8 @@ It has these top-level messages:
 package proto
 
 import proto1 "github.com/gogo/protobuf/proto"
-import fmt "fmt"
-import math "math"
+import "fmt"
+import "math"
 import _ "github.com/gogo/protobuf/gogoproto"
 
 // Reference imports to suppress errors if they are not otherwise used.

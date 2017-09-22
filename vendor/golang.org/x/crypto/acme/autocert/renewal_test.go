@@ -65,15 +65,15 @@ func TestRenewFromCache(t *testing.T) {
 			if err := discoTmpl.Execute(w, ca.URL); err != nil {
 				t.Fatalf("discoTmpl: %v", err)
 			}
-		// client key registration
+			// client key registration
 		case "/new-reg":
 			w.Write([]byte("{}"))
-		// domain authorization
+			// domain authorization
 		case "/new-authz":
 			w.Header().Set("Location", ca.URL+"/authz/1")
 			w.WriteHeader(http.StatusCreated)
 			w.Write([]byte(`{"status": "valid"}`))
-		// cert request
+			// cert request
 		case "/new-cert":
 			var req struct {
 				CSR string `json:"csr"`
@@ -92,7 +92,7 @@ func TestRenewFromCache(t *testing.T) {
 			w.Header().Set("Link", chainUp)
 			w.WriteHeader(http.StatusCreated)
 			w.Write(der)
-		// CA chain cert
+			// CA chain cert
 		case "/ca-cert":
 			der, err := dummyCert(nil, "ca")
 			if err != nil {

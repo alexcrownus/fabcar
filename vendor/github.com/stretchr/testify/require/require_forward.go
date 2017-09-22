@@ -7,10 +7,10 @@ package require
 
 import (
 
-	assert "github.com/stretchr/testify/assert"
-	http "net/http"
-	url "net/url"
-	time "time"
+	"github.com/stretchr/testify/assert"
+	"net/http"
+	"net/url"
+	"time"
 )
 
 

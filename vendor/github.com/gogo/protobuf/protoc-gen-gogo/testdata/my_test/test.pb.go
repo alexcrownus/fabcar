@@ -21,9 +21,9 @@ It has these top-level messages:
 */
 package my_test
 
-import proto "github.com/gogo/protobuf/proto"
-import fmt "fmt"
-import math "math"
+import "github.com/gogo/protobuf/proto"
+import "fmt"
+import "math"
 import _ "multi"
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -801,7 +801,7 @@ func _Communique_OneofSizer(msg proto.Message) (n int) {
 		n += 1
 	case *Communique_Delta_:
 		n += proto.SizeVarint(12<<3 | proto.WireVarint)
-		n += proto.SizeVarint(uint64((uint32(x.Delta) << 1) ^ uint32((int32(x.Delta) >> 31))))
+		n += proto.SizeVarint(uint64((uint32(x.Delta) << 1) ^ uint32(int32(x.Delta) >> 31)))
 	case *Communique_Msg:
 		s := proto.Size(x.Msg)
 		n += proto.SizeVarint(13<<3 | proto.WireBytes)

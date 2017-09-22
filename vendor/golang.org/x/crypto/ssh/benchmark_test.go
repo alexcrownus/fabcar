@@ -80,7 +80,7 @@ func BenchmarkEndToEnd(b *testing.B) {
 	defer client.Close()
 	defer server.Close()
 
-	size := (1 << 20)
+	size := 1 << 20
 	input := make([]byte, size)
 	output := make([]byte, size)
 	b.SetBytes(int64(size))

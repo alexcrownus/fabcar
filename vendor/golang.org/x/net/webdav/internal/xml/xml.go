@@ -603,7 +603,7 @@ func (d *Decoder) rawToken() (Token, error) {
 			b0 = b
 		}
 		data := d.buf.Bytes()
-		data = data[0 : len(data)-2] // chop ?>
+		data = data[0: len(data)-2] // chop ?>
 
 		if target == "xml" {
 			content := string(data)
@@ -660,7 +660,7 @@ func (d *Decoder) rawToken() (Token, error) {
 				b0, b1 = b1, b
 			}
 			data := d.buf.Bytes()
-			data = data[0 : len(data)-3] // chop -->
+			data = data[0: len(data)-3] // chop -->
 			return Comment(data), nil
 
 		case '[': // <![
@@ -793,7 +793,7 @@ func (d *Decoder) rawToken() (Token, error) {
 			copy(nattr, attr)
 			attr = nattr
 		}
-		attr = attr[0 : n+1]
+		attr = attr[0: n+1]
 		a := &attr[n]
 		if a.Name, ok = d.nsname(); !ok {
 			if d.err == nil {
@@ -1102,7 +1102,7 @@ Input:
 		b0, b1 = b1, b
 	}
 	data := d.buf.Bytes()
-	data = data[0 : len(data)-trunc]
+	data = data[0: len(data)-trunc]
 
 	// Inspect each rune for being a disallowed character.
 	buf := data
@@ -1913,7 +1913,7 @@ func escapeText(w io.Writer, s []byte, escapeNewline bool) error {
 			}
 			continue
 		}
-		if _, err := w.Write(s[last : i-width]); err != nil {
+		if _, err := w.Write(s[last: i-width]); err != nil {
 			return err
 		}
 		if _, err := w.Write(esc); err != nil {
@@ -1959,7 +1959,7 @@ func (p *printer) EscapeString(s string) {
 			}
 			continue
 		}
-		p.WriteString(s[last : i-width])
+		p.WriteString(s[last: i-width])
 		p.Write(esc)
 		last = i
 	}
@@ -1994,5 +1994,5 @@ func procInst(param, s string) string {
 	if idx == -1 {
 		return ""
 	}
-	return v[1 : idx+1]
+	return v[1: idx+1]
 }

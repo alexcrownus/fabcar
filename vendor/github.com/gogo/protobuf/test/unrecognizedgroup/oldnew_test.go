@@ -32,7 +32,7 @@ import (
 	"github.com/gogo/protobuf/proto"
 	math_rand "math/rand"
 	"testing"
-	time "time"
+	"time"
 )
 
 func TestNewOld(t *testing.T) {

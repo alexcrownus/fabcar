@@ -92,19 +92,19 @@ func Test_Mock_Chained_On(t *testing.T) {
 	var mockedService = new(TestExampleImplementation)
 
 	mockedService.
-		On("TheExampleMethod", 1, 2, 3).
+	On("TheExampleMethod", 1, 2, 3).
 		Return(0).
 		On("TheExampleMethod3", AnythingOfType("*mock.ExampleType")).
 		Return(nil)
 
 	expectedCalls := []*Call{
-		&Call{
+		{
 			Parent:          &mockedService.Mock,
 			Method:          "TheExampleMethod",
 			Arguments:       []interface{}{1, 2, 3},
 			ReturnArguments: []interface{}{0},
 		},
-		&Call{
+		{
 			Parent:          &mockedService.Mock,
 			Method:          "TheExampleMethod3",
 			Arguments:       []interface{}{AnythingOfType("*mock.ExampleType")},
@@ -132,7 +132,7 @@ func Test_Mock_On_WithFuncArg(t *testing.T) {
 	var mockedService = new(TestExampleImplementation)
 
 	c := mockedService.
-		On("TheExampleMethodFunc", AnythingOfType("func(string) error")).
+	On("TheExampleMethodFunc", AnythingOfType("func(string) error")).
 		Return(nil)
 
 	assert.Equal(t, []*Call{c}, mockedService.ExpectedCalls)
@@ -210,7 +210,7 @@ func Test_Mock_On_WithVariadicFunc(t *testing.T) {
 	var mockedService = new(TestExampleImplementation)
 
 	c := mockedService.
-		On("TheExampleMethodVariadic", []int{1, 2, 3}).
+	On("TheExampleMethodVariadic", []int{1, 2, 3}).
 		Return(nil)
 
 	assert.Equal(t, []*Call{c}, mockedService.ExpectedCalls)
@@ -254,7 +254,7 @@ func Test_Mock_On_WithVariadicFuncWithEmptyInterfaceArray(t *testing.T) {
 
 	var expected []interface{}
 	c := mockedService.
-		On("TheExampleMethodVariadicInterface", expected).
+	On("TheExampleMethodVariadicInterface", expected).
 		Return(nil)
 
 	assert.Equal(t, []*Call{c}, mockedService.ExpectedCalls)
@@ -285,7 +285,7 @@ func Test_Mock_On_WithFuncTypeArg(t *testing.T) {
 	var mockedService = new(TestExampleImplementation)
 
 	c := mockedService.
-		On("TheExampleMethodFuncType", AnythingOfType("mock.ExampleFuncType")).
+	On("TheExampleMethodFuncType", AnythingOfType("mock.ExampleFuncType")).
 		Return(nil)
 
 	assert.Equal(t, []*Call{c}, mockedService.ExpectedCalls)
@@ -304,7 +304,7 @@ func Test_Mock_Return(t *testing.T) {
 	var mockedService = new(TestExampleImplementation)
 
 	c := mockedService.
-		On("TheExampleMethod", "A", "B", true).
+	On("TheExampleMethod", "A", "B", true).
 		Return(1, "two", true)
 
 	require.Equal(t, []*Call{c}, mockedService.ExpectedCalls)
@@ -462,7 +462,7 @@ func Test_Mock_Return_Twice(t *testing.T) {
 	var mockedService = new(TestExampleImplementation)
 
 	c := mockedService.
-		On("TheExampleMethod", "A", "B", true).
+	On("TheExampleMethod", "A", "B", true).
 		Return(1, "two", true).
 		Twice()
 
@@ -487,7 +487,7 @@ func Test_Mock_Return_Times(t *testing.T) {
 	var mockedService = new(TestExampleImplementation)
 
 	c := mockedService.
-		On("TheExampleMethod", "A", "B", true).
+	On("TheExampleMethod", "A", "B", true).
 		Return(1, "two", true).
 		Times(5)
 
@@ -512,7 +512,7 @@ func Test_Mock_Return_Nothing(t *testing.T) {
 	var mockedService = new(TestExampleImplementation)
 
 	c := mockedService.
-		On("TheExampleMethod", "A", "B", true).
+	On("TheExampleMethod", "A", "B", true).
 		Return()
 
 	require.Equal(t, []*Call{c}, mockedService.ExpectedCalls)
@@ -649,11 +649,11 @@ func Test_Mock_Called_For_Bounded_Repeatability(t *testing.T) {
 	var mockedService = new(TestExampleImplementation)
 
 	mockedService.
-		On("Test_Mock_Called_For_Bounded_Repeatability", 1, 2, 3).
+	On("Test_Mock_Called_For_Bounded_Repeatability", 1, 2, 3).
 		Return(5, "6", true).
 		Once()
 	mockedService.
-		On("Test_Mock_Called_For_Bounded_Repeatability", 1, 2, 3).
+	On("Test_Mock_Called_For_Bounded_Repeatability", 1, 2, 3).
 		Return(-1, "hi", false)
 
 	returnArguments1 := mockedService.Called(1, 2, 3)
@@ -917,7 +917,7 @@ func Test_Mock_AssertCalled_WithAnythingOfTypeArgument(t *testing.T) {
 	var mockedService = new(TestExampleImplementation)
 
 	mockedService.
-		On("Test_Mock_AssertCalled_WithAnythingOfTypeArgument", Anything, Anything, Anything).
+	On("Test_Mock_AssertCalled_WithAnythingOfTypeArgument", Anything, Anything, Anything).
 		Return()
 
 	mockedService.Called(1, "two", []uint8("three"))

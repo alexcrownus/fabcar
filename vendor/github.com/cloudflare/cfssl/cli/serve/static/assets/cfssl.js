@@ -222,7 +222,7 @@
   var home = {
     controller: function() {
       page.title('');
-      return;
+
     },
     view: function() {
       return appWrapper([
@@ -286,7 +286,7 @@
     controller: function() {
       scan.vm.init(m.route.param('domain'));
       page.title(Tformat('scan.title'));
-      return;
+
     },
     view: function() {
       function broad() {
@@ -613,7 +613,7 @@
     controller: function() {
       bundle.vm.init(m.route.param('domain'));
       page.title(Tformat('bundle.title'));
-      return;
+
     },
     view: function() {
       var results = bundle.vm.Bundle();

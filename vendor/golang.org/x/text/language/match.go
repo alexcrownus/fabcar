@@ -115,7 +115,7 @@ func (m *matcher) Match(want ...Tag) (t Tag, index int, c Confidence) {
 type scriptRegionFlags uint8
 
 const (
-	isList = 1 << iota
+	isList       = 1 << iota
 	scriptInFrom
 	regionInFrom
 )
@@ -182,9 +182,9 @@ func addTags(t Tag) (Tag, error) {
 		}
 		// Search matches for und-script-region. Note that for these cases
 		// region will never be a group so there is no need to check for this.
-		list := likelyRegion[t.region : t.region+1]
+		list := likelyRegion[t.region: t.region+1]
 		if x := list[0]; x.flags&isList != 0 {
-			list = likelyRegionList[x.lang : x.lang+uint16(x.script)]
+			list = likelyRegionList[x.lang: x.lang+uint16(x.script)]
 		}
 		for _, x := range list {
 			// Deviating from the spec. See match_test.go for details.
@@ -199,7 +199,7 @@ func addTags(t Tag) (Tag, error) {
 		if t.lang < langNoIndexOffset {
 			x := likelyLang[t.lang]
 			if x.flags&isList != 0 {
-				list := likelyLangList[x.region : x.region+uint16(x.script)]
+				list := likelyLangList[x.region: x.region+uint16(x.script)]
 				if t.script != 0 {
 					for _, x := range list {
 						if scriptID(x.script) == t.script && x.flags&scriptInFrom != 0 {

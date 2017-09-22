@@ -28,7 +28,7 @@
 
 package importdedup
 
-import testing "testing"
+import "testing"
 
 func TestImportDedup(t *testing.T) {
 }

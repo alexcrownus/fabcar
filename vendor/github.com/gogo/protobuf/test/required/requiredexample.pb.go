@@ -16,14 +16,14 @@
 */
 package required
 
-import proto "github.com/gogo/protobuf/proto"
-import fmt "fmt"
-import math "math"
+import "github.com/gogo/protobuf/proto"
+import "fmt"
+import "math"
 import _ "github.com/gogo/protobuf/gogoproto"
 
 import github_com_gogo_protobuf_proto "github.com/gogo/protobuf/proto"
 
-import io "io"
+import "io"
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
@@ -437,10 +437,10 @@ func (m *NidOptNative) MarshalTo(dAtA []byte) (int, error) {
 	i = encodeVarintRequiredexample(dAtA, i, uint64(m.Field6))
 	dAtA[i] = 0x38
 	i++
-	i = encodeVarintRequiredexample(dAtA, i, uint64((uint32(m.Field7)<<1)^uint32((m.Field7>>31))))
+	i = encodeVarintRequiredexample(dAtA, i, uint64((uint32(m.Field7)<<1)^uint32(m.Field7>>31)))
 	dAtA[i] = 0x40
 	i++
-	i = encodeVarintRequiredexample(dAtA, i, uint64((uint64(m.Field8)<<1)^uint64((m.Field8>>63))))
+	i = encodeVarintRequiredexample(dAtA, i, uint64((uint64(m.Field8)<<1)^uint64(m.Field8>>63)))
 	dAtA[i] = 0x4d
 	i++
 	i = encodeFixed32Requiredexample(dAtA, i, uint32(m.Field9))
@@ -539,14 +539,14 @@ func (m *NinOptNative) MarshalTo(dAtA []byte) (int, error) {
 	} else {
 		dAtA[i] = 0x38
 		i++
-		i = encodeVarintRequiredexample(dAtA, i, uint64((uint32(*m.Field7)<<1)^uint32((*m.Field7>>31))))
+		i = encodeVarintRequiredexample(dAtA, i, uint64((uint32(*m.Field7)<<1)^uint32(*m.Field7>>31)))
 	}
 	if m.Field8 == nil {
 		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Field8")
 	} else {
 		dAtA[i] = 0x40
 		i++
-		i = encodeVarintRequiredexample(dAtA, i, uint64((uint64(*m.Field8)<<1)^uint64((*m.Field8>>63))))
+		i = encodeVarintRequiredexample(dAtA, i, uint64((uint64(*m.Field8)<<1)^uint64(*m.Field8>>63)))
 	}
 	if m.Field9 == nil {
 		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Field9")
@@ -1027,7 +1027,7 @@ func sovRequiredexample(x uint64) (n int) {
 	return n
 }
 func sozRequiredexample(x uint64) (n int) {
-	return sovRequiredexample(uint64((x << 1) ^ uint64((int64(x) >> 63))))
+	return sovRequiredexample(uint64((x << 1) ^ uint64(int64(x) >> 63)))
 }
 func (m *RequiredExample) Unmarshal(dAtA []byte) error {
 	var hasFields [1]uint64

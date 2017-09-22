@@ -249,7 +249,7 @@ func testAuthorizedKeys(t *testing.T, authKeys []byte, expected []authResult) {
 		var r authResult
 		var err error
 		r.pubKey, r.comments, r.options, rest, err = ParseAuthorizedKey(rest)
-		r.ok = (err == nil)
+		r.ok = err == nil
 		t.Log(err)
 		r.rest = string(rest)
 		values = append(values, r)

@@ -23,21 +23,21 @@
 */
 package unrecognized
 
-import proto "github.com/gogo/protobuf/proto"
-import fmt "fmt"
-import math "math"
+import "github.com/gogo/protobuf/proto"
+import "fmt"
+import "math"
 import _ "github.com/gogo/protobuf/gogoproto"
 
 import github_com_gogo_protobuf_protoc_gen_gogo_descriptor "github.com/gogo/protobuf/protoc-gen-gogo/descriptor"
 import github_com_gogo_protobuf_proto "github.com/gogo/protobuf/proto"
 import compress_gzip "compress/gzip"
-import bytes "bytes"
+import "bytes"
 import io_ioutil "io/ioutil"
 
-import strings "strings"
-import reflect "reflect"
+import "strings"
+import "reflect"
 
-import io "io"
+import "io"
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
@@ -2709,7 +2709,7 @@ func sovUnrecognized(x uint64) (n int) {
 	return n
 }
 func sozUnrecognized(x uint64) (n int) {
-	return sovUnrecognized(uint64((x << 1) ^ uint64((int64(x) >> 63))))
+	return sovUnrecognized(uint64((x << 1) ^ uint64(int64(x)>>63)))
 }
 func (this *A) String() string {
 	if this == nil {

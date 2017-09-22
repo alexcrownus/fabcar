@@ -31,7 +31,7 @@ const (
 
 // Sticky socket option value types
 const (
-	ssoTypeIPMreq = iota + 1
+	ssoTypeIPMreq         = iota + 1
 	ssoTypeIPMreqn
 	ssoTypeGroupReq
 	ssoTypeGroupSourceReq

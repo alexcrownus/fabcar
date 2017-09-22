@@ -1208,7 +1208,7 @@ func (b *builder) writeLanguageInfo() {
 // data to know when it cannot be used for parent relations.
 func (b *builder) writeLikelyData() {
 	const (
-		isList = 1 << iota
+		isList       = 1 << iota
 		scriptInFrom
 		regionInFrom
 	)

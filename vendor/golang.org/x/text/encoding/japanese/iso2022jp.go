@@ -31,7 +31,7 @@ func iso2022JPNewEncoder() transform.Transformer {
 }
 
 const (
-	asciiState = iota
+	asciiState    = iota
 	katakanaState
 	jis0208State
 	jis0212State

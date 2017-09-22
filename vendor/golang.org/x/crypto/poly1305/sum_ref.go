@@ -64,7 +64,7 @@ func Sum(out *[TagSize]byte, msg []byte, key *[32]byte) {
 		h1 += (binary.LittleEndian.Uint32(block[3:]) >> 2) & 0x3ffffff
 		h2 += (binary.LittleEndian.Uint32(block[6:]) >> 4) & 0x3ffffff
 		h3 += (binary.LittleEndian.Uint32(block[9:]) >> 6) & 0x3ffffff
-		h4 += (binary.LittleEndian.Uint32(block[12:]) >> 8)
+		h4 += binary.LittleEndian.Uint32(block[12:]) >> 8
 
 		// h *= r
 		d0 := (uint64(h0) * r0) + (uint64(h1) * R4) + (uint64(h2) * R3) + (uint64(h3) * R2) + (uint64(h4) * R1)
@@ -119,9 +119,9 @@ func Sum(out *[TagSize]byte, msg []byte, key *[32]byte) {
 
 	// h %= 2^128
 	h0 |= h1 << 26
-	h1 = ((h1 >> 6) | (h2 << 20))
-	h2 = ((h2 >> 12) | (h3 << 14))
-	h3 = ((h3 >> 18) | (h4 << 8))
+	h1 = (h1 >> 6) | (h2 << 20)
+	h2 = (h2 >> 12) | (h3 << 14)
+	h3 = (h3 >> 18) | (h4 << 8)
 
 	// s: the s part of the key
 	// tag = (h + s) % (2^128)

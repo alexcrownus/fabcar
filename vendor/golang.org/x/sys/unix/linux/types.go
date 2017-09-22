@@ -213,9 +213,9 @@ const (
 // Basic types
 
 type (
-	_C_short     C.short
-	_C_int       C.int
-	_C_long      C.long
+	_C_short C.short
+	_C_int C.int
+	_C_long C.long
 	_C_long_long C.longlong
 )
 

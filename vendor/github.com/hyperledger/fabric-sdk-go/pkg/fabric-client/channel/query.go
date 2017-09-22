@@ -58,7 +58,7 @@ func (c *Channel) QueryBlockByHash(blockHash []byte) (*common.Block, error) {
 	// prepare arguments to call qscc GetBlockByNumber function
 	var args []string
 	args = append(args, c.Name())
-	args = append(args, string(blockHash[:len(blockHash)]))
+	args = append(args, string(blockHash[:]))
 
 	payload, err := c.queryBySystemChaincodeByTarget("qscc", "GetBlockByHash", args, c.PrimaryPeer())
 	if err != nil {

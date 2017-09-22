@@ -841,7 +841,7 @@ func (t *http2Server) Write(s *Stream, hdr []byte, data []byte, opts *Options) (
 	}
 	hdr = append(hdr, data[:secondStart]...)
 	data = data[secondStart:]
-	isLastSlice := (len(data) == 0)
+	isLastSlice := len(data) == 0
 	var writeHeaderFrame bool
 	s.mu.Lock()
 	if s.state == streamDone {

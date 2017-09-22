@@ -23,7 +23,7 @@ import (
 	"io/ioutil"
 	"testing"
 
-	ct "github.com/google/certificate-transparency-go"
+	"github.com/google/certificate-transparency-go"
 	"github.com/google/certificate-transparency-go/tls"
 )
 

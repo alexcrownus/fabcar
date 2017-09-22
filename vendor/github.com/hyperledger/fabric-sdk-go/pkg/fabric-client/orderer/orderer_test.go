@@ -14,7 +14,7 @@ import (
 
 	fab "github.com/hyperledger/fabric-sdk-go/api/apifabclient"
 	client "github.com/hyperledger/fabric-sdk-go/pkg/fabric-client"
-	mocks "github.com/hyperledger/fabric-sdk-go/pkg/fabric-client/mocks"
+	"github.com/hyperledger/fabric-sdk-go/pkg/fabric-client/mocks"
 
 	"strings"
 

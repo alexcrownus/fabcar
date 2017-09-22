@@ -13,11 +13,11 @@
 */
 package vanity
 
-import proto "github.com/gogo/protobuf/proto"
-import fmt "fmt"
-import math "math"
+import "github.com/gogo/protobuf/proto"
+import "fmt"
+import "math"
 
-import io "io"
+import "io"
 import github_com_gogo_protobuf_proto "github.com/gogo/protobuf/proto"
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -130,7 +130,7 @@ func sovVanity(x uint64) (n int) {
 	return n
 }
 func sozVanity(x uint64) (n int) {
-	return sovVanity(uint64((x << 1) ^ uint64((int64(x) >> 63))))
+	return sovVanity(uint64((x << 1) ^ uint64(int64(x) >> 63)))
 }
 func (m *A) Unmarshal(dAtA []byte) error {
 	var hasFields [1]uint64

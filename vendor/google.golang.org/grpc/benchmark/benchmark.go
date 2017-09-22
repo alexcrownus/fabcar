@@ -60,7 +60,7 @@ func (f Features) String() string {
 // AddOne add 1 to the features slice
 func AddOne(features []int, featuresMaxPosition []int) {
 	for i := len(features) - 1; i >= 0; i-- {
-		features[i] = (features[i] + 1)
+		features[i] = features[i] + 1
 		if features[i]/featuresMaxPosition[i] == 0 {
 			break
 		}

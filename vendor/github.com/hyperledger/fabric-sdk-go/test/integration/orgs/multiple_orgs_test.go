@@ -14,7 +14,7 @@ import (
 	"time"
 
 	"github.com/hyperledger/fabric-sdk-go/api/apitxn"
-	fabrictxn "github.com/hyperledger/fabric-sdk-go/pkg/fabric-txn"
+	"github.com/hyperledger/fabric-sdk-go/pkg/fabric-txn"
 )
 
 const (
@@ -71,7 +71,7 @@ func TestOrgsEndToEnd(t *testing.T) {
 	}
 	if initialValue+1 != finalValue {
 		t.Fatalf("Org1 invoke result was not propagated to org2. Expected %d, got: %d",
-			(initialValue + 1), finalValue)
+			initialValue + 1, finalValue)
 	}
 }
 

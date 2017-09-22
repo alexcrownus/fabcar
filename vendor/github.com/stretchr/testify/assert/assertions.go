@@ -432,7 +432,7 @@ func isEmpty(object interface{}) bool {
 		fallthrough
 	case reflect.Slice, reflect.Chan:
 		{
-			return (objValue.Len() == 0)
+			return objValue.Len() == 0
 		}
 	case reflect.Struct:
 		switch object.(type) {
@@ -933,7 +933,7 @@ func matchRegexp(rx interface{}, str interface{}) bool {
 		r = regexp.MustCompile(fmt.Sprint(rx))
 	}
 
-	return (r.FindStringIndex(fmt.Sprint(str)) != nil)
+	return r.FindStringIndex(fmt.Sprint(str)) != nil
 
 }
 

@@ -210,7 +210,7 @@ func TestJWSEncodeJSONEC(t *testing.T) {
 		var head struct {
 			Alg   string
 			Nonce string
-			JWK   struct {
+			JWK struct {
 				Crv string
 				Kty string
 				X   string

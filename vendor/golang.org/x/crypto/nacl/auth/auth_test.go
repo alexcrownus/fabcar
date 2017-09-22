@@ -6,7 +6,7 @@ package auth
 
 import (
 	"bytes"
-	rand "crypto/rand"
+	"crypto/rand"
 	mrand "math/rand"
 	"testing"
 )

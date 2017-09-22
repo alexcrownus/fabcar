@@ -21,18 +21,18 @@
 */
 package types
 
-import proto "github.com/gogo/protobuf/proto"
-import fmt "fmt"
-import math "math"
+import "github.com/gogo/protobuf/proto"
+import "fmt"
+import "math"
 import _ "github.com/gogo/protobuf/gogoproto"
 import google_protobuf1 "github.com/gogo/protobuf/types"
 import google_protobuf2 "github.com/gogo/protobuf/types"
 import google_protobuf3 "github.com/gogo/protobuf/types"
 
-import time "time"
+import "time"
 import github_com_gogo_protobuf_types "github.com/gogo/protobuf/types"
 
-import io "io"
+import "io"
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
@@ -2664,7 +2664,7 @@ func sovTypes(x uint64) (n int) {
 	return n
 }
 func sozTypes(x uint64) (n int) {
-	return sovTypes(uint64((x << 1) ^ uint64((int64(x) >> 63))))
+	return sovTypes(uint64((x << 1) ^ uint64(int64(x) >> 63)))
 }
 func (m *KnownTypes) Marshal() (dAtA []byte, err error) {
 	size := m.Size()

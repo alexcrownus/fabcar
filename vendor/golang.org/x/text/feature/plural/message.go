@@ -100,9 +100,9 @@ type message struct {
 const (
 	// Start with non-ASCII to allow skipping values.
 	kindDefault    = 0x80 + iota
-	kindScale      // verb f, number of fraction digits follows
-	kindScientific // verb e, number of fraction digits follows
-	kindPrecision  // verb g, number of significant digits follows
+	kindScale       // verb f, number of fraction digits follows
+	kindScientific  // verb e, number of fraction digits follows
+	kindPrecision   // verb g, number of significant digits follows
 )
 
 var handle = catmsg.Register("golang.org/x/text/feature/plural:plural", execute)

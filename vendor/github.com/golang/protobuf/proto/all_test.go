@@ -44,8 +44,6 @@ import (
 	"testing"
 	"time"
 
-	. "github.com/golang/protobuf/proto"
-	. "github.com/golang/protobuf/proto/testdata"
 )
 
 var globalO *Buffer
@@ -1954,7 +1952,7 @@ func TestMapFieldRoundTrips(t *testing.T) {
 			8: "Dave",
 		},
 		MsgMapping: map[int64]*FloatingPoint{
-			0x7001: &FloatingPoint{F: Float64(2.0)},
+			0x7001: {F: Float64(2.0)},
 		},
 		ByteMapping: map[bool][]byte{
 			false: []byte("that's not right!"),
@@ -2005,7 +2003,7 @@ func TestMapFieldWithNil(t *testing.T) {
 func TestMapFieldWithNilBytes(t *testing.T) {
 	m1 := &MessageWithMap{
 		ByteMapping: map[bool][]byte{
-			false: []byte{},
+			false: {},
 			true:  nil,
 		},
 	}

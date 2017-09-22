@@ -35,7 +35,7 @@ func NewVM(filter []Instruction) (*VM, error) {
 			if check <= int(ins.SkipFalse) {
 				return nil, fmt.Errorf("cannot jump %d instructions in false case; jumping past program bounds", ins.SkipFalse)
 			}
-		// Check for division or modulus by zero
+			// Check for division or modulus by zero
 		case ALUOpConstant:
 			if ins.Val != 0 {
 				break
@@ -45,7 +45,7 @@ func NewVM(filter []Instruction) (*VM, error) {
 			case ALUOpDiv, ALUOpMod:
 				return nil, errors.New("cannot divide by zero using ALUOpConstant")
 			}
-		// Check for unknown extensions
+			// Check for unknown extensions
 		case LoadExtension:
 			switch ins.Num {
 			case ExtLen:

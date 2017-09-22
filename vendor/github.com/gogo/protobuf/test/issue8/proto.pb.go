@@ -14,13 +14,13 @@ It has these top-level messages:
 package proto
 
 import proto1 "github.com/gogo/protobuf/proto"
-import fmt "fmt"
-import math "math"
+import "fmt"
+import "math"
 import _ "github.com/gogo/protobuf/gogoproto"
 
-import bytes "bytes"
+import "bytes"
 
-import io "io"
+import "io"
 import github_com_gogo_protobuf_proto "github.com/gogo/protobuf/proto"
 
 // Reference imports to suppress errors if they are not otherwise used.

@@ -142,7 +142,7 @@ func TestCompareString(t *testing.T) {
 			return
 		}
 
-		if result := (a == b); result != tc.result {
+		if result := a == b; result != tc.result {
 			t.Errorf("got %v; want %v", result, tc.result)
 		}
 	})

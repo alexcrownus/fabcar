@@ -690,7 +690,7 @@ func (t *http2Client) Write(s *Stream, hdr []byte, data []byte, opts *Options) e
 	}
 	hdr = append(hdr, data[:secondStart]...)
 	data = data[secondStart:]
-	isLastSlice := (len(data) == 0)
+	isLastSlice := len(data) == 0
 	r := bytes.NewBuffer(hdr)
 	var (
 		p   []byte

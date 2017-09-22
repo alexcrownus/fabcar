@@ -29,7 +29,7 @@ type fieldInfo struct {
 type fieldFlags int
 
 const (
-	fElement fieldFlags = 1 << iota
+	fElement  fieldFlags = 1 << iota
 	fAttr
 	fCharData
 	fInnerXml
@@ -275,7 +275,7 @@ func min(a, b int) int {
 func addFieldInfo(typ reflect.Type, tinfo *typeInfo, newf *fieldInfo) error {
 	var conflicts []int
 Loop:
-	// First, figure all conflicts. Most working code will have none.
+// First, figure all conflicts. Most working code will have none.
 	for i := range tinfo.fields {
 		oldf := &tinfo.fields[i]
 		if oldf.flags&fMode != newf.flags&fMode {

@@ -313,7 +313,7 @@ func TestBufferBloat(t *testing.T) {
 		return nil
 	}
 
-	n := &Network{Kbps: 8 /* 1KBps */, Latency: time.Second, MTU: 8}
+	n := &Network{Kbps: 8 /* 1KBps */ , Latency: time.Second, MTU: 8}
 	bdpBytes := (n.Kbps * 1024 / 8) * int(n.Latency/time.Second) // 1024
 	c, err := n.Conn(bufConn{&bytes.Buffer{}})
 	if err != nil {

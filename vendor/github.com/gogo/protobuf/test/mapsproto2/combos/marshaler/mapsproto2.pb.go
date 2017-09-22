@@ -16,9 +16,9 @@ It has these top-level messages:
 */
 package proto2_maps
 
-import proto "github.com/gogo/protobuf/proto"
-import fmt "fmt"
-import math "math"
+import "github.com/gogo/protobuf/proto"
+import "fmt"
+import "math"
 import _ "github.com/gogo/protobuf/gogoproto"
 
 import github_com_gogo_protobuf_test_custom "github.com/gogo/protobuf/test/custom"
@@ -27,13 +27,13 @@ import github_com_gogo_protobuf_test "github.com/gogo/protobuf/test"
 import github_com_gogo_protobuf_protoc_gen_gogo_descriptor "github.com/gogo/protobuf/protoc-gen-gogo/descriptor"
 import github_com_gogo_protobuf_proto "github.com/gogo/protobuf/proto"
 import compress_gzip "compress/gzip"
-import bytes "bytes"
+import "bytes"
 import io_ioutil "io/ioutil"
 
-import strconv "strconv"
+import "strconv"
 
-import strings "strings"
-import reflect "reflect"
+import "strings"
+import "reflect"
 import github_com_gogo_protobuf_sortkeys "github.com/gogo/protobuf/sortkeys"
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -2469,10 +2469,10 @@ func (m *AllMaps) MarshalTo(dAtA []byte) (int, error) {
 			i = encodeVarintMapsproto2(dAtA, i, uint64(mapSize))
 			dAtA[i] = 0x8
 			i++
-			i = encodeVarintMapsproto2(dAtA, i, uint64((uint32(k)<<1)^uint32((k>>31))))
+			i = encodeVarintMapsproto2(dAtA, i, uint64((uint32(k)<<1)^uint32(k>>31)))
 			dAtA[i] = 0x10
 			i++
-			i = encodeVarintMapsproto2(dAtA, i, uint64((uint32(v)<<1)^uint32((v>>31))))
+			i = encodeVarintMapsproto2(dAtA, i, uint64((uint32(v)<<1)^uint32(v>>31)))
 		}
 	}
 	if len(m.Sint64Map) > 0 {
@@ -2484,10 +2484,10 @@ func (m *AllMaps) MarshalTo(dAtA []byte) (int, error) {
 			i = encodeVarintMapsproto2(dAtA, i, uint64(mapSize))
 			dAtA[i] = 0x8
 			i++
-			i = encodeVarintMapsproto2(dAtA, i, uint64((uint64(k)<<1)^uint64((k>>63))))
+			i = encodeVarintMapsproto2(dAtA, i, uint64((uint64(k)<<1)^uint64(k>>63)))
 			dAtA[i] = 0x10
 			i++
-			i = encodeVarintMapsproto2(dAtA, i, uint64((uint64(v)<<1)^uint64((v>>63))))
+			i = encodeVarintMapsproto2(dAtA, i, uint64((uint64(v)<<1)^uint64(v>>63)))
 		}
 	}
 	if len(m.Fixed32Map) > 0 {
@@ -2820,10 +2820,10 @@ func (m *AllMapsOrdered) MarshalTo(dAtA []byte) (int, error) {
 			i = encodeVarintMapsproto2(dAtA, i, uint64(mapSize))
 			dAtA[i] = 0x8
 			i++
-			i = encodeVarintMapsproto2(dAtA, i, uint64((uint32(k)<<1)^uint32((k>>31))))
+			i = encodeVarintMapsproto2(dAtA, i, uint64((uint32(k)<<1)^uint32(k>>31)))
 			dAtA[i] = 0x10
 			i++
-			i = encodeVarintMapsproto2(dAtA, i, uint64((uint32(v)<<1)^uint32((v>>31))))
+			i = encodeVarintMapsproto2(dAtA, i, uint64((uint32(v)<<1)^uint32(v>>31)))
 		}
 	}
 	if len(m.Sint64Map) > 0 {
@@ -2840,10 +2840,10 @@ func (m *AllMapsOrdered) MarshalTo(dAtA []byte) (int, error) {
 			i = encodeVarintMapsproto2(dAtA, i, uint64(mapSize))
 			dAtA[i] = 0x8
 			i++
-			i = encodeVarintMapsproto2(dAtA, i, uint64((uint64(k)<<1)^uint64((k>>63))))
+			i = encodeVarintMapsproto2(dAtA, i, uint64((uint64(k)<<1)^uint64(k>>63)))
 			dAtA[i] = 0x10
 			i++
-			i = encodeVarintMapsproto2(dAtA, i, uint64((uint64(v)<<1)^uint64((v>>63))))
+			i = encodeVarintMapsproto2(dAtA, i, uint64((uint64(v)<<1)^uint64(v>>63)))
 		}
 	}
 	if len(m.Fixed32Map) > 0 {
@@ -3946,7 +3946,7 @@ func sovMapsproto2(x uint64) (n int) {
 	return n
 }
 func sozMapsproto2(x uint64) (n int) {
-	return sovMapsproto2(uint64((x << 1) ^ uint64((int64(x) >> 63))))
+	return sovMapsproto2(uint64((x << 1) ^ uint64(int64(x) >> 63)))
 }
 func (this *FloatingPoint) String() string {
 	if this == nil {

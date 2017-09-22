@@ -21,7 +21,7 @@ import (
 	"crypto"
 	"crypto/sha256"
 
-	ct "github.com/google/certificate-transparency-go"
+	"github.com/google/certificate-transparency-go"
 	"github.com/google/certificate-transparency-go/x509"
 )
 

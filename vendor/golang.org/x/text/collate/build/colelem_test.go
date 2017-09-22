@@ -53,9 +53,9 @@ var ceTests = []ceTest{
 	{contractCE, []int{1, (1 << maxNBits) - 1, 1}, 0xC001001F},
 	{contractCE, []int{(1 << maxTrieIndexBits) - 1, 1, 1}, 0xC001FFF1},
 	{contractCE, []int{1, 1, (1 << maxContractOffsetBits) - 1}, 0xDFFF0011},
-	{contractCE, []int{1, (1 << maxNBits), 1}, 0xFFFF},
-	{contractCE, []int{(1 << maxTrieIndexBits), 1, 1}, 0xFFFF},
-	{contractCE, []int{1, (1 << maxContractOffsetBits), 1}, 0xFFFF},
+	{contractCE, []int{1, 1 << maxNBits, 1}, 0xFFFF},
+	{contractCE, []int{1 << maxTrieIndexBits, 1, 1}, 0xFFFF},
+	{contractCE, []int{1, 1 << maxContractOffsetBits, 1}, 0xFFFF},
 
 	{expandCE, []int{0}, 0xE0000000},
 	{expandCE, []int{5}, 0xE0000005},

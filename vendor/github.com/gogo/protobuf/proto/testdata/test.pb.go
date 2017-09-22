@@ -43,9 +43,9 @@ It has these top-level messages:
 */
 package testdata
 
-import proto "github.com/gogo/protobuf/proto"
-import fmt "fmt"
-import math "math"
+import "github.com/gogo/protobuf/proto"
+import "fmt"
+import "math"
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
@@ -2672,10 +2672,10 @@ func _Oneof_OneofSizer(msg proto.Message) (n int) {
 		n += len(x.F_Bytes)
 	case *Oneof_F_Sint32:
 		n += proto.SizeVarint(12<<3 | proto.WireVarint)
-		n += proto.SizeVarint(uint64((uint32(x.F_Sint32) << 1) ^ uint32((int32(x.F_Sint32) >> 31))))
+		n += proto.SizeVarint(uint64((uint32(x.F_Sint32) << 1) ^ uint32(int32(x.F_Sint32) >> 31)))
 	case *Oneof_F_Sint64:
 		n += proto.SizeVarint(13<<3 | proto.WireVarint)
-		n += proto.SizeVarint(uint64(uint64(x.F_Sint64<<1) ^ uint64((int64(x.F_Sint64) >> 63))))
+		n += proto.SizeVarint(uint64(uint64(x.F_Sint64<<1) ^ uint64(int64(x.F_Sint64) >> 63)))
 	case *Oneof_F_Enum:
 		n += proto.SizeVarint(14<<3 | proto.WireVarint)
 		n += proto.SizeVarint(uint64(x.F_Enum))

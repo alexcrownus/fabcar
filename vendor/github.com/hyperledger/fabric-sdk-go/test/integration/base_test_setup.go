@@ -23,7 +23,7 @@ import (
 	"github.com/hyperledger/fabric-sdk-go/pkg/fabric-client/events"
 	"github.com/hyperledger/fabric-sdk-go/pkg/fabric-client/orderer"
 	fabricTxn "github.com/hyperledger/fabric-sdk-go/pkg/fabric-txn"
-	admin "github.com/hyperledger/fabric-sdk-go/pkg/fabric-txn/admin"
+	"github.com/hyperledger/fabric-sdk-go/pkg/fabric-txn/admin"
 	pb "github.com/hyperledger/fabric-sdk-go/third_party/github.com/hyperledger/fabric/protos/peer"
 )
 

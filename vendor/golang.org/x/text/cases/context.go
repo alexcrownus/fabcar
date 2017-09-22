@@ -128,7 +128,7 @@ func (c *context) writeString(s string) bool {
 
 // copy writes the current rune to dst.
 func (c *context) copy() bool {
-	return c.writeBytes(c.src[c.pSrc : c.pSrc+c.sz])
+	return c.writeBytes(c.src[c.pSrc: c.pSrc+c.sz])
 }
 
 // copyXOR copies the current rune to dst and modifies it by applying the XOR
@@ -201,7 +201,7 @@ func lower(c *context) bool {
 	e := exceptions[c.info>>exceptionShift:]
 	offset := 2 + e[0]&lengthMask // size of header + fold string
 	if nLower := (e[1] >> lengthBits) & lengthMask; nLower != noChange {
-		return c.writeString(e[offset : offset+nLower])
+		return c.writeString(e[offset: offset+nLower])
 	}
 	return c.copy()
 }
@@ -244,7 +244,7 @@ func upper(c *context) bool {
 		n, e = e[1]&lengthMask, e[n:]
 	}
 	if n != noChange {
-		return c.writeString(e[offset : offset+n])
+		return c.writeString(e[offset: offset+n])
 	}
 	return c.copy()
 }
@@ -293,11 +293,11 @@ func title(c *context) bool {
 		if nFirst != noChange {
 			e = e[nFirst:]
 		}
-		return c.writeString(e[offset : offset+nTitle])
+		return c.writeString(e[offset: offset+nTitle])
 	}
 	if ct == cLower && nFirst != noChange {
 		// Use the uppercase version instead.
-		return c.writeString(e[offset : offset+nFirst])
+		return c.writeString(e[offset: offset+nFirst])
 	}
 	// Already in correct case.
 	return c.copy()
@@ -350,7 +350,7 @@ func foldFull(c *context) bool {
 		}
 		n = (e[1] >> lengthBits) & lengthMask
 	}
-	return c.writeString(e[2 : 2+n])
+	return c.writeString(e[2: 2+n])
 }
 
 // isFoldFull reports whether the current run is mapped to foldFull

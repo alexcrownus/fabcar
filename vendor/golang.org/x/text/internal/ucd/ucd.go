@@ -22,7 +22,7 @@ import (
 
 // UnicodeData.txt fields.
 const (
-	CodePoint = iota
+	CodePoint               = iota
 	Name
 	GeneralCategory
 	CanonicalCombiningClass

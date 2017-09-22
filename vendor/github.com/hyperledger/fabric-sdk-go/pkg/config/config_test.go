@@ -16,7 +16,7 @@ import (
 	"time"
 
 	api "github.com/hyperledger/fabric-sdk-go/api/apiconfig"
-	logging "github.com/op/go-logging"
+	"github.com/op/go-logging"
 	"github.com/spf13/viper"
 )
 

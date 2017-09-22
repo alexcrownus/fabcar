@@ -76,15 +76,15 @@ It has these top-level messages:
 */
 package test
 
-import testing "testing"
+import "testing"
 import math_rand "math/rand"
-import time "time"
+import "time"
 import github_com_gogo_protobuf_proto "github.com/gogo/protobuf/proto"
 import github_com_gogo_protobuf_jsonpb "github.com/gogo/protobuf/jsonpb"
-import fmt "fmt"
+import "fmt"
 import go_parser "go/parser"
-import proto "github.com/gogo/protobuf/proto"
-import math "math"
+import "github.com/gogo/protobuf/proto"
+import "math"
 import _ "github.com/gogo/protobuf/gogoproto"
 
 // Reference imports to suppress errors if they are not otherwise used.

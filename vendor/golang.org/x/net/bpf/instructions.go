@@ -572,28 +572,28 @@ func (a JumpIf) String() string {
 	// K == A
 	case JumpEqual:
 		return conditionalJump(a, "jeq", "jneq")
-	// K != A
+		// K != A
 	case JumpNotEqual:
 		return fmt.Sprintf("jneq #%d,%d", a.Val, a.SkipTrue)
-	// K > A
+		// K > A
 	case JumpGreaterThan:
 		return conditionalJump(a, "jgt", "jle")
-	// K < A
+		// K < A
 	case JumpLessThan:
 		return fmt.Sprintf("jlt #%d,%d", a.Val, a.SkipTrue)
-	// K >= A
+		// K >= A
 	case JumpGreaterOrEqual:
 		return conditionalJump(a, "jge", "jlt")
-	// K <= A
+		// K <= A
 	case JumpLessOrEqual:
 		return fmt.Sprintf("jle #%d,%d", a.Val, a.SkipTrue)
-	// K & A != 0
+		// K & A != 0
 	case JumpBitsSet:
 		if a.SkipFalse > 0 {
 			return fmt.Sprintf("jset #%d,%d,%d", a.Val, a.SkipTrue, a.SkipFalse)
 		}
 		return fmt.Sprintf("jset #%d,%d", a.Val, a.SkipTrue)
-	// K & A == 0, there is no assembler instruction for JumpBitNotSet, use JumpBitSet and invert skips
+		// K & A == 0, there is no assembler instruction for JumpBitNotSet, use JumpBitSet and invert skips
 	case JumpBitsNotSet:
 		return JumpIf{Cond: JumpBitsSet, SkipTrue: a.SkipFalse, SkipFalse: a.SkipTrue, Val: a.Val}.String()
 	default:

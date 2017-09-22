@@ -4,9 +4,9 @@
 
 package jsonpb
 
-import proto "github.com/gogo/protobuf/proto"
-import fmt "fmt"
-import math "math"
+import "github.com/gogo/protobuf/proto"
+import "fmt"
+import "math"
 import google_protobuf "github.com/gogo/protobuf/types"
 import google_protobuf1 "github.com/gogo/protobuf/types"
 import google_protobuf2 "github.com/gogo/protobuf/types"
@@ -512,9 +512,9 @@ func _MsgWithOneof_OneofSizer(msg proto.Message) (n int) {
 }
 
 type Real struct {
-	Value                        *float64 `protobuf:"fixed64,1,opt,name=value" json:"value,omitempty"`
+	Value            *float64    `protobuf:"fixed64,1,opt,name=value" json:"value,omitempty"`
 	proto.XXX_InternalExtensions `json:"-"`
-	XXX_unrecognized             []byte `json:"-"`
+	XXX_unrecognized []byte      `json:"-"`
 }
 
 func (m *Real) Reset()                    { *m = Real{} }
@@ -538,9 +538,9 @@ func (m *Real) GetValue() float64 {
 }
 
 type Complex struct {
-	Imaginary                    *float64 `protobuf:"fixed64,1,opt,name=imaginary" json:"imaginary,omitempty"`
+	Imaginary        *float64    `protobuf:"fixed64,1,opt,name=imaginary" json:"imaginary,omitempty"`
 	proto.XXX_InternalExtensions `json:"-"`
-	XXX_unrecognized             []byte `json:"-"`
+	XXX_unrecognized []byte      `json:"-"`
 }
 
 func (m *Complex) Reset()                    { *m = Complex{} }

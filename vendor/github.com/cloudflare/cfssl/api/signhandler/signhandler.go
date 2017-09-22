@@ -38,7 +38,7 @@ func NewHandlerFromSigner(signer signer.Signer) (h *api.HTTPHandler, err error) 
 
 	// Sign will only respond for profiles that have no auth provider.
 	// So if all of the profiles require authentication, we return an error.
-	haveUnauth := (policy.Default.Provider == nil)
+	haveUnauth := policy.Default.Provider == nil
 	for _, profile := range policy.Profiles {
 		haveUnauth = haveUnauth || (profile.Provider == nil)
 	}
@@ -189,12 +189,12 @@ func NewAuthHandlerFromSigner(signer signer.Signer) (http.Handler, error) {
 	// AuthSign will not respond for profiles that have no auth provider.
 	// So if there are no profiles with auth providers in this policy,
 	// we return an error.
-	haveAuth := (policy.Default.Provider != nil)
+	haveAuth := policy.Default.Provider != nil
 	for _, profile := range policy.Profiles {
 		if haveAuth {
 			break
 		}
-		haveAuth = (profile.Provider != nil)
+		haveAuth = profile.Provider != nil
 	}
 
 	if !haveAuth {

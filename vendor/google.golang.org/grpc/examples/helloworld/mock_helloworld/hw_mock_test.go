@@ -25,7 +25,7 @@ import (
 	"github.com/golang/mock/gomock"
 	"github.com/golang/protobuf/proto"
 	"golang.org/x/net/context"
-	helloworld "google.golang.org/grpc/examples/helloworld/helloworld"
+	"google.golang.org/grpc/examples/helloworld/helloworld"
 	hwmock "google.golang.org/grpc/examples/helloworld/mock_helloworld"
 )
 

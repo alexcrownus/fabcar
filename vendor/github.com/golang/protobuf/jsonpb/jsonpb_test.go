@@ -297,7 +297,7 @@ var (
 			TypeUrl: "type.googleapis.com/google.protobuf.Duration",
 			Value: []byte{
 				// &durpb.Duration{Seconds: 1, Nanos: 212000000 }
-				1 << 3, 1, // seconds
+				1 << 3, 1,                      // seconds
 				2 << 3, 0x80, 0xba, 0x8b, 0x65, // nanos
 			},
 		},

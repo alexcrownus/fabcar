@@ -6,19 +6,18 @@
 package require
 
 import (
-
-	assert "github.com/stretchr/testify/assert"
-	http "net/http"
-	url "net/url"
-	time "time"
+	"github.com/stretchr/testify/assert"
+	"net/http"
+	"net/url"
+	"time"
 )
 
 
 // Condition uses a Comparison to assert a complex condition.
 func Condition(t TestingT, comp assert.Comparison, msgAndArgs ...interface{}) {
-  if !assert.Condition(t, comp, msgAndArgs...) {
-    t.FailNow()
-  }
+	if !assert.Condition(t, comp, msgAndArgs...) {
+		t.FailNow()
+	}
 }
 
 
@@ -31,9 +30,9 @@ func Condition(t TestingT, comp assert.Comparison, msgAndArgs ...interface{}) {
 // 
 // Returns whether the assertion was successful (true) or not (false).
 func Contains(t TestingT, s interface{}, contains interface{}, msgAndArgs ...interface{}) {
-  if !assert.Contains(t, s, contains, msgAndArgs...) {
-    t.FailNow()
-  }
+	if !assert.Contains(t, s, contains, msgAndArgs...) {
+		t.FailNow()
+	}
 }
 
 
@@ -44,9 +43,9 @@ func Contains(t TestingT, s interface{}, contains interface{}, msgAndArgs ...int
 // 
 // Returns whether the assertion was successful (true) or not (false).
 func Empty(t TestingT, object interface{}, msgAndArgs ...interface{}) {
-  if !assert.Empty(t, object, msgAndArgs...) {
-    t.FailNow()
-  }
+	if !assert.Empty(t, object, msgAndArgs...) {
+		t.FailNow()
+	}
 }
 
 
@@ -56,9 +55,9 @@ func Empty(t TestingT, object interface{}, msgAndArgs ...interface{}) {
 // 
 // Returns whether the assertion was successful (true) or not (false).
 func Equal(t TestingT, expected interface{}, actual interface{}, msgAndArgs ...interface{}) {
-  if !assert.Equal(t, expected, actual, msgAndArgs...) {
-    t.FailNow()
-  }
+	if !assert.Equal(t, expected, actual, msgAndArgs...) {
+		t.FailNow()
+	}
 }
 
 
@@ -72,9 +71,9 @@ func Equal(t TestingT, expected interface{}, actual interface{}, msgAndArgs ...i
 // 
 // Returns whether the assertion was successful (true) or not (false).
 func EqualError(t TestingT, theError error, errString string, msgAndArgs ...interface{}) {
-  if !assert.EqualError(t, theError, errString, msgAndArgs...) {
-    t.FailNow()
-  }
+	if !assert.EqualError(t, theError, errString, msgAndArgs...) {
+		t.FailNow()
+	}
 }
 
 
@@ -85,9 +84,9 @@ func EqualError(t TestingT, theError error, errString string, msgAndArgs ...inte
 // 
 // Returns whether the assertion was successful (true) or not (false).
 func EqualValues(t TestingT, expected interface{}, actual interface{}, msgAndArgs ...interface{}) {
-  if !assert.EqualValues(t, expected, actual, msgAndArgs...) {
-    t.FailNow()
-  }
+	if !assert.EqualValues(t, expected, actual, msgAndArgs...) {
+		t.FailNow()
+	}
 }
 
 
@@ -100,9 +99,9 @@ func EqualValues(t TestingT, expected interface{}, actual interface{}, msgAndArg
 // 
 // Returns whether the assertion was successful (true) or not (false).
 func Error(t TestingT, err error, msgAndArgs ...interface{}) {
-  if !assert.Error(t, err, msgAndArgs...) {
-    t.FailNow()
-  }
+	if !assert.Error(t, err, msgAndArgs...) {
+		t.FailNow()
+	}
 }
 
 
@@ -112,25 +111,25 @@ func Error(t TestingT, err error, msgAndArgs ...interface{}) {
 // 
 // Returns whether the assertion was successful (true) or not (false).
 func Exactly(t TestingT, expected interface{}, actual interface{}, msgAndArgs ...interface{}) {
-  if !assert.Exactly(t, expected, actual, msgAndArgs...) {
-    t.FailNow()
-  }
+	if !assert.Exactly(t, expected, actual, msgAndArgs...) {
+		t.FailNow()
+	}
 }
 
 
 // Fail reports a failure through
 func Fail(t TestingT, failureMessage string, msgAndArgs ...interface{}) {
-  if !assert.Fail(t, failureMessage, msgAndArgs...) {
-    t.FailNow()
-  }
+	if !assert.Fail(t, failureMessage, msgAndArgs...) {
+		t.FailNow()
+	}
 }
 
 
 // FailNow fails test
 func FailNow(t TestingT, failureMessage string, msgAndArgs ...interface{}) {
-  if !assert.FailNow(t, failureMessage, msgAndArgs...) {
-    t.FailNow()
-  }
+	if !assert.FailNow(t, failureMessage, msgAndArgs...) {
+		t.FailNow()
+	}
 }
 
 
@@ -140,9 +139,9 @@ func FailNow(t TestingT, failureMessage string, msgAndArgs ...interface{}) {
 // 
 // Returns whether the assertion was successful (true) or not (false).
 func False(t TestingT, value bool, msgAndArgs ...interface{}) {
-  if !assert.False(t, value, msgAndArgs...) {
-    t.FailNow()
-  }
+	if !assert.False(t, value, msgAndArgs...) {
+		t.FailNow()
+	}
 }
 
 
@@ -153,9 +152,9 @@ func False(t TestingT, value bool, msgAndArgs ...interface{}) {
 // 
 // Returns whether the assertion was successful (true) or not (false).
 func HTTPBodyContains(t TestingT, handler http.HandlerFunc, method string, url string, values url.Values, str interface{}) {
-  if !assert.HTTPBodyContains(t, handler, method, url, values, str) {
-    t.FailNow()
-  }
+	if !assert.HTTPBodyContains(t, handler, method, url, values, str) {
+		t.FailNow()
+	}
 }
 
 
@@ -166,9 +165,9 @@ func HTTPBodyContains(t TestingT, handler http.HandlerFunc, method string, url s
 // 
 // Returns whether the assertion was successful (true) or not (false).
 func HTTPBodyNotContains(t TestingT, handler http.HandlerFunc, method string, url string, values url.Values, str interface{}) {
-  if !assert.HTTPBodyNotContains(t, handler, method, url, values, str) {
-    t.FailNow()
-  }
+	if !assert.HTTPBodyNotContains(t, handler, method, url, values, str) {
+		t.FailNow()
+	}
 }
 
 
@@ -178,9 +177,9 @@ func HTTPBodyNotContains(t TestingT, handler http.HandlerFunc, method string, ur
 // 
 // Returns whether the assertion was successful (true) or not (false).
 func HTTPError(t TestingT, handler http.HandlerFunc, method string, url string, values url.Values) {
-  if !assert.HTTPError(t, handler, method, url, values) {
-    t.FailNow()
-  }
+	if !assert.HTTPError(t, handler, method, url, values) {
+		t.FailNow()
+	}
 }
 
 
@@ -190,9 +189,9 @@ func HTTPError(t TestingT, handler http.HandlerFunc, method string, url string, 
 // 
 // Returns whether the assertion was successful (true) or not (false).
 func HTTPRedirect(t TestingT, handler http.HandlerFunc, method string, url string, values url.Values) {
-  if !assert.HTTPRedirect(t, handler, method, url, values) {
-    t.FailNow()
-  }
+	if !assert.HTTPRedirect(t, handler, method, url, values) {
+		t.FailNow()
+	}
 }
 
 
@@ -202,9 +201,9 @@ func HTTPRedirect(t TestingT, handler http.HandlerFunc, method string, url strin
 // 
 // Returns whether the assertion was successful (true) or not (false).
 func HTTPSuccess(t TestingT, handler http.HandlerFunc, method string, url string, values url.Values) {
-  if !assert.HTTPSuccess(t, handler, method, url, values) {
-    t.FailNow()
-  }
+	if !assert.HTTPSuccess(t, handler, method, url, values) {
+		t.FailNow()
+	}
 }
 
 
@@ -212,9 +211,9 @@ func HTTPSuccess(t TestingT, handler http.HandlerFunc, method string, url string
 // 
 //    assert.Implements(t, (*MyInterface)(nil), new(MyObject), "MyObject")
 func Implements(t TestingT, interfaceObject interface{}, object interface{}, msgAndArgs ...interface{}) {
-  if !assert.Implements(t, interfaceObject, object, msgAndArgs...) {
-    t.FailNow()
-  }
+	if !assert.Implements(t, interfaceObject, object, msgAndArgs...) {
+		t.FailNow()
+	}
 }
 
 
@@ -224,17 +223,17 @@ func Implements(t TestingT, interfaceObject interface{}, object interface{}, msg
 // 
 // Returns whether the assertion was successful (true) or not (false).
 func InDelta(t TestingT, expected interface{}, actual interface{}, delta float64, msgAndArgs ...interface{}) {
-  if !assert.InDelta(t, expected, actual, delta, msgAndArgs...) {
-    t.FailNow()
-  }
+	if !assert.InDelta(t, expected, actual, delta, msgAndArgs...) {
+		t.FailNow()
+	}
 }
 
 
 // InDeltaSlice is the same as InDelta, except it compares two slices.
 func InDeltaSlice(t TestingT, expected interface{}, actual interface{}, delta float64, msgAndArgs ...interface{}) {
-  if !assert.InDeltaSlice(t, expected, actual, delta, msgAndArgs...) {
-    t.FailNow()
-  }
+	if !assert.InDeltaSlice(t, expected, actual, delta, msgAndArgs...) {
+		t.FailNow()
+	}
 }
 
 
@@ -242,25 +241,24 @@ func InDeltaSlice(t TestingT, expected interface{}, actual interface{}, delta fl
 // 
 // Returns whether the assertion was successful (true) or not (false).
 func InEpsilon(t TestingT, expected interface{}, actual interface{}, epsilon float64, msgAndArgs ...interface{}) {
-  if !assert.InEpsilon(t, expected, actual, epsilon, msgAndArgs...) {
-    t.FailNow()
-  }
+	if !assert.InEpsilon(t, expected, actual, epsilon, msgAndArgs...) {
+		t.FailNow()
+	}
 }
-
 
 // InEpsilonSlice is the same as InEpsilon, except it compares two slices.
 func InEpsilonSlice(t TestingT, expected interface{}, actual interface{}, delta float64, msgAndArgs ...interface{}) {
-  if !assert.InEpsilonSlice(t, expected, actual, delta, msgAndArgs...) {
-    t.FailNow()
-  }
+	if !assert.InEpsilonSlice(t, expected, actual, delta, msgAndArgs...) {
+		t.FailNow()
+	}
 }
 
 
 // IsType asserts that the specified objects are of the same type.
 func IsType(t TestingT, expectedType interface{}, object interface{}, msgAndArgs ...interface{}) {
-  if !assert.IsType(t, expectedType, object, msgAndArgs...) {
-    t.FailNow()
-  }
+	if !assert.IsType(t, expectedType, object, msgAndArgs...) {
+		t.FailNow()
+	}
 }
 
 
@@ -270,9 +268,9 @@ func IsType(t TestingT, expectedType interface{}, object interface{}, msgAndArgs
 // 
 // Returns whether the assertion was successful (true) or not (false).
 func JSONEq(t TestingT, expected string, actual string, msgAndArgs ...interface{}) {
-  if !assert.JSONEq(t, expected, actual, msgAndArgs...) {
-    t.FailNow()
-  }
+	if !assert.JSONEq(t, expected, actual, msgAndArgs...) {
+		t.FailNow()
+	}
 }
 
 
@@ -283,9 +281,9 @@ func JSONEq(t TestingT, expected string, actual string, msgAndArgs ...interface{
 // 
 // Returns whether the assertion was successful (true) or not (false).
 func Len(t TestingT, object interface{}, length int, msgAndArgs ...interface{}) {
-  if !assert.Len(t, object, length, msgAndArgs...) {
-    t.FailNow()
-  }
+	if !assert.Len(t, object, length, msgAndArgs...) {
+		t.FailNow()
+	}
 }
 
 
@@ -295,9 +293,9 @@ func Len(t TestingT, object interface{}, length int, msgAndArgs ...interface{}) 
 // 
 // Returns whether the assertion was successful (true) or not (false).
 func Nil(t TestingT, object interface{}, msgAndArgs ...interface{}) {
-  if !assert.Nil(t, object, msgAndArgs...) {
-    t.FailNow()
-  }
+	if !assert.Nil(t, object, msgAndArgs...) {
+		t.FailNow()
+	}
 }
 
 
@@ -310,9 +308,9 @@ func Nil(t TestingT, object interface{}, msgAndArgs ...interface{}) {
 // 
 // Returns whether the assertion was successful (true) or not (false).
 func NoError(t TestingT, err error, msgAndArgs ...interface{}) {
-  if !assert.NoError(t, err, msgAndArgs...) {
-    t.FailNow()
-  }
+	if !assert.NoError(t, err, msgAndArgs...) {
+		t.FailNow()
+	}
 }
 
 
@@ -325,9 +323,9 @@ func NoError(t TestingT, err error, msgAndArgs ...interface{}) {
 // 
 // Returns whether the assertion was successful (true) or not (false).
 func NotContains(t TestingT, s interface{}, contains interface{}, msgAndArgs ...interface{}) {
-  if !assert.NotContains(t, s, contains, msgAndArgs...) {
-    t.FailNow()
-  }
+	if !assert.NotContains(t, s, contains, msgAndArgs...) {
+		t.FailNow()
+	}
 }
 
 
@@ -340,9 +338,9 @@ func NotContains(t TestingT, s interface{}, contains interface{}, msgAndArgs ...
 // 
 // Returns whether the assertion was successful (true) or not (false).
 func NotEmpty(t TestingT, object interface{}, msgAndArgs ...interface{}) {
-  if !assert.NotEmpty(t, object, msgAndArgs...) {
-    t.FailNow()
-  }
+	if !assert.NotEmpty(t, object, msgAndArgs...) {
+		t.FailNow()
+	}
 }
 
 
@@ -352,9 +350,9 @@ func NotEmpty(t TestingT, object interface{}, msgAndArgs ...interface{}) {
 // 
 // Returns whether the assertion was successful (true) or not (false).
 func NotEqual(t TestingT, expected interface{}, actual interface{}, msgAndArgs ...interface{}) {
-  if !assert.NotEqual(t, expected, actual, msgAndArgs...) {
-    t.FailNow()
-  }
+	if !assert.NotEqual(t, expected, actual, msgAndArgs...) {
+		t.FailNow()
+	}
 }
 
 
@@ -364,9 +362,9 @@ func NotEqual(t TestingT, expected interface{}, actual interface{}, msgAndArgs .
 // 
 // Returns whether the assertion was successful (true) or not (false).
 func NotNil(t TestingT, object interface{}, msgAndArgs ...interface{}) {
-  if !assert.NotNil(t, object, msgAndArgs...) {
-    t.FailNow()
-  }
+	if !assert.NotNil(t, object, msgAndArgs...) {
+		t.FailNow()
+	}
 }
 
 
@@ -378,9 +376,9 @@ func NotNil(t TestingT, object interface{}, msgAndArgs ...interface{}) {
 // 
 // Returns whether the assertion was successful (true) or not (false).
 func NotPanics(t TestingT, f assert.PanicTestFunc, msgAndArgs ...interface{}) {
-  if !assert.NotPanics(t, f, msgAndArgs...) {
-    t.FailNow()
-  }
+	if !assert.NotPanics(t, f, msgAndArgs...) {
+		t.FailNow()
+	}
 }
 
 
@@ -391,17 +389,17 @@ func NotPanics(t TestingT, f assert.PanicTestFunc, msgAndArgs ...interface{}) {
 // 
 // Returns whether the assertion was successful (true) or not (false).
 func NotRegexp(t TestingT, rx interface{}, str interface{}, msgAndArgs ...interface{}) {
-  if !assert.NotRegexp(t, rx, str, msgAndArgs...) {
-    t.FailNow()
-  }
+	if !assert.NotRegexp(t, rx, str, msgAndArgs...) {
+		t.FailNow()
+	}
 }
 
 
 // NotZero asserts that i is not the zero value for its type and returns the truth.
 func NotZero(t TestingT, i interface{}, msgAndArgs ...interface{}) {
-  if !assert.NotZero(t, i, msgAndArgs...) {
-    t.FailNow()
-  }
+	if !assert.NotZero(t, i, msgAndArgs...) {
+		t.FailNow()
+	}
 }
 
 
@@ -413,9 +411,9 @@ func NotZero(t TestingT, i interface{}, msgAndArgs ...interface{}) {
 // 
 // Returns whether the assertion was successful (true) or not (false).
 func Panics(t TestingT, f assert.PanicTestFunc, msgAndArgs ...interface{}) {
-  if !assert.Panics(t, f, msgAndArgs...) {
-    t.FailNow()
-  }
+	if !assert.Panics(t, f, msgAndArgs...) {
+		t.FailNow()
+	}
 }
 
 
@@ -426,9 +424,9 @@ func Panics(t TestingT, f assert.PanicTestFunc, msgAndArgs ...interface{}) {
 // 
 // Returns whether the assertion was successful (true) or not (false).
 func Regexp(t TestingT, rx interface{}, str interface{}, msgAndArgs ...interface{}) {
-  if !assert.Regexp(t, rx, str, msgAndArgs...) {
-    t.FailNow()
-  }
+	if !assert.Regexp(t, rx, str, msgAndArgs...) {
+		t.FailNow()
+	}
 }
 
 
@@ -438,9 +436,9 @@ func Regexp(t TestingT, rx interface{}, str interface{}, msgAndArgs ...interface
 // 
 // Returns whether the assertion was successful (true) or not (false).
 func True(t TestingT, value bool, msgAndArgs ...interface{}) {
-  if !assert.True(t, value, msgAndArgs...) {
-    t.FailNow()
-  }
+	if !assert.True(t, value, msgAndArgs...) {
+		t.FailNow()
+	}
 }
 
 
@@ -450,15 +448,15 @@ func True(t TestingT, value bool, msgAndArgs ...interface{}) {
 // 
 // Returns whether the assertion was successful (true) or not (false).
 func WithinDuration(t TestingT, expected time.Time, actual time.Time, delta time.Duration, msgAndArgs ...interface{}) {
-  if !assert.WithinDuration(t, expected, actual, delta, msgAndArgs...) {
-    t.FailNow()
-  }
+	if !assert.WithinDuration(t, expected, actual, delta, msgAndArgs...) {
+		t.FailNow()
+	}
 }
 
 
 // Zero asserts that i is the zero value for its type and returns the truth.
 func Zero(t TestingT, i interface{}, msgAndArgs ...interface{}) {
-  if !assert.Zero(t, i, msgAndArgs...) {
-    t.FailNow()
-  }
+	if !assert.Zero(t, i, msgAndArgs...) {
+		t.FailNow()
+	}
 }

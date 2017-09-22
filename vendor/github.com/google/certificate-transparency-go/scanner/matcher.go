@@ -18,7 +18,7 @@ import (
 	"math/big"
 	"regexp"
 
-	ct "github.com/google/certificate-transparency-go"
+	"github.com/google/certificate-transparency-go"
 	"github.com/google/certificate-transparency-go/x509"
 )
 

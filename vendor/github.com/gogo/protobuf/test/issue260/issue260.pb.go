@@ -15,17 +15,17 @@
 */
 package issue260
 
-import proto "github.com/gogo/protobuf/proto"
-import fmt "fmt"
-import math "math"
+import "github.com/gogo/protobuf/proto"
+import "fmt"
+import "math"
 import _ "github.com/gogo/protobuf/gogoproto"
 import _ "github.com/gogo/protobuf/types"
 
-import time "time"
+import "time"
 
 import github_com_gogo_protobuf_types "github.com/gogo/protobuf/types"
 
-import io "io"
+import "io"
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
@@ -581,7 +581,7 @@ func sovIssue260(x uint64) (n int) {
 	return n
 }
 func sozIssue260(x uint64) (n int) {
-	return sovIssue260(uint64((x << 1) ^ uint64((int64(x) >> 63))))
+	return sovIssue260(uint64((x << 1) ^ uint64(int64(x) >> 63)))
 }
 func (m *Dropped) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)

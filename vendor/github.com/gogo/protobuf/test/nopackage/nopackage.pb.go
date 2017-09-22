@@ -13,11 +13,11 @@ It has these top-level messages:
 */
 package nopackage
 
-import proto "github.com/gogo/protobuf/proto"
-import fmt "fmt"
-import math "math"
+import "github.com/gogo/protobuf/proto"
+import "fmt"
+import "math"
 
-import io "io"
+import "io"
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
@@ -135,7 +135,7 @@ func sovNopackage(x uint64) (n int) {
 	return n
 }
 func sozNopackage(x uint64) (n int) {
-	return sovNopackage(uint64((x << 1) ^ uint64((int64(x) >> 63))))
+	return sovNopackage(uint64((x << 1) ^ uint64(int64(x) >> 63)))
 }
 func (m *M) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)

@@ -15,9 +15,9 @@ import (
 	fab "github.com/hyperledger/fabric-sdk-go/api/apifabclient"
 	"github.com/hyperledger/fabric-sdk-go/api/apitxn"
 	client "github.com/hyperledger/fabric-sdk-go/pkg/fabric-client"
-	mocks "github.com/hyperledger/fabric-sdk-go/pkg/fabric-client/mocks"
+	"github.com/hyperledger/fabric-sdk-go/pkg/fabric-client/mocks"
 
-	internal "github.com/hyperledger/fabric-sdk-go/pkg/fabric-client/internal"
+	"github.com/hyperledger/fabric-sdk-go/pkg/fabric-client/internal"
 
 	ledger_util "github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/core/ledger/util"
 	fcConsumer "github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/events/consumer"
@@ -174,10 +174,10 @@ func (b *MockTxEventBuilder) Build() *pb.Event_Block {
 func (b *MockTxEventBuilder) buildBlockMetadata() *common.BlockMetadata {
 	return &common.BlockMetadata{
 		Metadata: [][]byte{
-			[]byte{},
-			[]byte{},
+			{},
+			{},
 			b.buildTransactionsFilterMetaDataBytes(),
-			[]byte{},
+			{},
 		},
 	}
 }
@@ -234,10 +234,10 @@ func (b *MockCCBlockEventBuilder) Build() *pb.Event_Block {
 func (b *MockCCBlockEventBuilder) buildBlockMetadata() *common.BlockMetadata {
 	return &common.BlockMetadata{
 		Metadata: [][]byte{
-			[]byte{},
-			[]byte{},
+			{},
+			{},
 			b.buildTransactionsFilterMetaDataBytes(),
-			[]byte{},
+			{},
 		},
 	}
 }

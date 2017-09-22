@@ -13,21 +13,21 @@
 */
 package issue261
 
-import proto "github.com/gogo/protobuf/proto"
-import fmt "fmt"
-import math "math"
+import "github.com/gogo/protobuf/proto"
+import "fmt"
+import "math"
 import _ "github.com/gogo/protobuf/gogoproto"
 import _ "github.com/gogo/protobuf/types"
 
-import time "time"
+import "time"
 
-import strings "strings"
-import reflect "reflect"
+import "strings"
+import "reflect"
 import github_com_gogo_protobuf_sortkeys "github.com/gogo/protobuf/sortkeys"
 
 import github_com_gogo_protobuf_types "github.com/gogo/protobuf/types"
 
-import io "io"
+import "io"
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
@@ -226,7 +226,7 @@ func sovIssue261(x uint64) (n int) {
 	return n
 }
 func sozIssue261(x uint64) (n int) {
-	return sovIssue261(uint64((x << 1) ^ uint64((int64(x) >> 63))))
+	return sovIssue261(uint64((x << 1) ^ uint64(int64(x)>>63)))
 }
 func (this *MapStdTypes) String() string {
 	if this == nil {

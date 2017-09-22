@@ -16,13 +16,13 @@
 */
 package enumcustomname
 
-import proto "github.com/gogo/protobuf/proto"
-import fmt "fmt"
-import math "math"
+import "github.com/gogo/protobuf/proto"
+import "fmt"
+import "math"
 import _ "github.com/gogo/protobuf/gogoproto"
-import test "github.com/gogo/protobuf/test"
+import "github.com/gogo/protobuf/test"
 
-import strconv "strconv"
+import "strconv"
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal

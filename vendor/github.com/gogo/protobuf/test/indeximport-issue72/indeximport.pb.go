@@ -13,15 +13,15 @@
 */
 package indeximport
 
-import proto "github.com/gogo/protobuf/proto"
-import fmt "fmt"
-import math "math"
-import index "github.com/gogo/protobuf/test/indeximport-issue72/index"
+import "github.com/gogo/protobuf/proto"
+import "fmt"
+import "math"
+import "github.com/gogo/protobuf/test/indeximport-issue72/index"
 import _ "github.com/gogo/protobuf/gogoproto"
 
-import bytes "bytes"
+import "bytes"
 
-import io "io"
+import "io"
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
@@ -265,7 +265,7 @@ func sovIndeximport(x uint64) (n int) {
 	return n
 }
 func sozIndeximport(x uint64) (n int) {
-	return sovIndeximport(uint64((x << 1) ^ uint64((int64(x) >> 63))))
+	return sovIndeximport(uint64((x << 1) ^ uint64(int64(x) >> 63)))
 }
 func (m *IndexQueries) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)

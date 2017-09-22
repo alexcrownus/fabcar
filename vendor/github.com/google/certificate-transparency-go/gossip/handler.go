@@ -22,7 +22,7 @@ import (
 	"net/http"
 	"time"
 
-	ct "github.com/google/certificate-transparency-go"
+	"github.com/google/certificate-transparency-go"
 )
 
 var defaultNumPollinationsToReturn = flag.Int("default_num_pollinations_to_return", 10,

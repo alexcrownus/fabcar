@@ -92,9 +92,9 @@ func (d0 *digest) Sum(in []byte) []byte {
 	var tmp [64]byte
 	tmp[0] = 0x80
 	if len%64 < 56 {
-		d.Write(tmp[0 : 56-len%64])
+		d.Write(tmp[0: 56-len%64])
 	} else {
-		d.Write(tmp[0 : 64+56-len%64])
+		d.Write(tmp[0: 64+56-len%64])
 	}
 
 	// Length in bits.

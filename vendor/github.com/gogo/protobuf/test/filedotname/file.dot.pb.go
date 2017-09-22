@@ -13,19 +13,19 @@ It has these top-level messages:
 */
 package filedotname
 
-import proto "github.com/gogo/protobuf/proto"
-import fmt "fmt"
-import math "math"
+import "github.com/gogo/protobuf/proto"
+import "fmt"
+import "math"
 import _ "github.com/gogo/protobuf/gogoproto"
 
 import github_com_gogo_protobuf_protoc_gen_gogo_descriptor "github.com/gogo/protobuf/protoc-gen-gogo/descriptor"
 import github_com_gogo_protobuf_proto "github.com/gogo/protobuf/proto"
 import compress_gzip "compress/gzip"
-import bytes "bytes"
+import "bytes"
 import io_ioutil "io/ioutil"
 
-import strings "strings"
-import reflect "reflect"
+import "strings"
+import "reflect"
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
@@ -527,7 +527,7 @@ func sovFileDot(x uint64) (n int) {
 	return n
 }
 func sozFileDot(x uint64) (n int) {
-	return sovFileDot(uint64((x << 1) ^ uint64((int64(x) >> 63))))
+	return sovFileDot(uint64((x << 1) ^ uint64(int64(x) >> 63)))
 }
 func (this *M) String() string {
 	if this == nil {

@@ -16,9 +16,9 @@ It has these top-level messages:
 */
 package one
 
-import proto "github.com/gogo/protobuf/proto"
-import fmt "fmt"
-import math "math"
+import "github.com/gogo/protobuf/proto"
+import "fmt"
+import "math"
 import _ "github.com/gogo/protobuf/gogoproto"
 
 import github_com_gogo_protobuf_test_custom "github.com/gogo/protobuf/test/custom"
@@ -27,13 +27,13 @@ import github_com_gogo_protobuf_test_casttype "github.com/gogo/protobuf/test/cas
 import github_com_gogo_protobuf_protoc_gen_gogo_descriptor "github.com/gogo/protobuf/protoc-gen-gogo/descriptor"
 import github_com_gogo_protobuf_proto "github.com/gogo/protobuf/proto"
 import compress_gzip "compress/gzip"
-import bytes "bytes"
+import "bytes"
 import io_ioutil "io/ioutil"
 
-import strings "strings"
-import reflect "reflect"
+import "strings"
+import "reflect"
 
-import unsafe "unsafe"
+import "unsafe"
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
@@ -506,10 +506,10 @@ func _AllTypesOneOf_OneofSizer(msg proto.Message) (n int) {
 		n += proto.SizeVarint(uint64(x.Field6))
 	case *AllTypesOneOf_Field7:
 		n += proto.SizeVarint(7<<3 | proto.WireVarint)
-		n += proto.SizeVarint(uint64((uint32(x.Field7) << 1) ^ uint32((int32(x.Field7) >> 31))))
+		n += proto.SizeVarint(uint64((uint32(x.Field7) << 1) ^ uint32(int32(x.Field7) >> 31)))
 	case *AllTypesOneOf_Field8:
 		n += proto.SizeVarint(8<<3 | proto.WireVarint)
-		n += proto.SizeVarint(uint64(uint64(x.Field8<<1) ^ uint64((int64(x.Field8) >> 63))))
+		n += proto.SizeVarint(uint64(uint64(x.Field8<<1) ^ uint64(int64(x.Field8) >> 63)))
 	case *AllTypesOneOf_Field9:
 		n += proto.SizeVarint(9<<3 | proto.WireFixed32)
 		n += 4
@@ -4006,7 +4006,7 @@ func sovOne(x uint64) (n int) {
 	return n
 }
 func sozOne(x uint64) (n int) {
-	return sovOne(uint64((x << 1) ^ uint64((int64(x) >> 63))))
+	return sovOne(uint64((x << 1) ^ uint64(int64(x) >> 63)))
 }
 func (this *Subby) String() string {
 	if this == nil {
@@ -4424,14 +4424,14 @@ func (m *AllTypesOneOf_Field7) MarshalTo(dAtA []byte) (int, error) {
 	i := 0
 	dAtA[i] = 0x38
 	i++
-	i = encodeVarintOne(dAtA, i, uint64((uint32(m.Field7)<<1)^uint32((m.Field7>>31))))
+	i = encodeVarintOne(dAtA, i, uint64((uint32(m.Field7)<<1)^uint32(m.Field7>>31)))
 	return i, nil
 }
 func (m *AllTypesOneOf_Field8) MarshalTo(dAtA []byte) (int, error) {
 	i := 0
 	dAtA[i] = 0x40
 	i++
-	i = encodeVarintOne(dAtA, i, uint64((uint64(m.Field8)<<1)^uint64((m.Field8>>63))))
+	i = encodeVarintOne(dAtA, i, uint64((uint64(m.Field8)<<1)^uint64(m.Field8>>63)))
 	return i, nil
 }
 func (m *AllTypesOneOf_Field9) MarshalTo(dAtA []byte) (int, error) {
